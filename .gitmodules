@@ -1,0 +1,3 @@
+[submodule "smart-dormitory-server"]
+	path = smart-dormitory-server
+	url = https://github.com/ShiWarai/smart-dormitory-server
