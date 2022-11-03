@@ -1,0 +1,67 @@
+<resources>
+    <string name="app_name">SmartDormitory</string>
+    <string name="SmartDormitory">Умное Общежитие</string>
+    <string name="Smart">Умное</string>
+    <string name="Dormitory">Общежитие</string>
+    <string name="login">Логин</string>
+    <string name="password">Пароль</string>
+    <string name="Enter">Войти</string>
+    <string name="NothaveAccount">Нет Аккаунта?</string>
+    <string name="LastBooking">Последнее бронирование</string>
+    <string name="image">Изображение</string>
+    <string name="download">Скачать</string>
+    <string name="texttodownload">Скачайте схему общежития - так будет проще все найти</string>
+    <string name="SoonEnd">Скоро закончится</string>
+    <string name="RecentlyFree">Недавно освободились</string>
+    <string name="filter">фильтр</string>
+    <string name="Active">Активные</string>
+    <string name="Ended">Завершенные</string>
+    <string name="Add">Добавить</string>
+    <string name="avatar">Аватар</string>
+    <string name="BaseInfo">Основная информация</string>
+    <string name="help">Помощь</string>
+    <string name="Room">Комната</string>
+    <string name="Role">Роль</string>
+    <string name="Bookings">Бронирования</string>
+    <string name="close">Закрыть</string>
+    <string name="home">Домашнаяя страница</string>
+    <string name="objects">Оборудования</string>
+    <string name="booking">Бронирования</string>
+    <string name="profile">Профиль</string>
+    <string name="object_details">Оборудование</string>
+
+    <string name="booking_new">Создать бронирование</string>
+    <string name="booking_details">Бронирование</string>
+    <string name="free">Свободно</string>
+    <string name="busy">Занято</string>
+    <string name="ChoseObject">Выберите Объект</string>
+    <string name="type">Тип</string>
+    <string name="Continue">Продолжить</string>
+    <string name="Cancel">Отменить</string>
+    <string name="ChoseTime">Укажите период пользования</string>
+    <string name="timeStart">Время начала</string>
+    <string name="timeEnd">Время окончания</string>
+    <string name="Book">Забронировать</string>
+    <string name="Canceled">Отменненые</string>
+    <string name="Awaited">Ожидаемые</string>
+    <string name="period_used">Период использования</string>
+    <string name="Start">Начало</string>
+    <string name="End">Окончание</string>
+    <string name="CancelBooking">Отменить бронирование</string>
+    <string name="EndBoooking">Завершить бронирование</string>
+    <string name="SomethingWrong">Что-то не так</string>
+    <string name="Busy">Загруженность</string>
+    <string name="typeObject">Тип оборудования</string>
+    <string name="status">Status</string>
+    <string name="description">Описание</string>
+    <string name="gotoBook">Перейти к бронированию</string>
+    <string name="SayAboutCrash">Сообщить о поломке</string>
+    <string name="DescribeProblem">Опишите проблему</string>
+    <string name="problem">Проблема</string>
+    <string name="reports">Поломки</string>
+    <string name="report_new">Новая поломка</string>
+    <string name="DescribeYourProblem">Опишите возникшую проблему</string>
+    <string name="Send">Отправить</string>
+
+
+</resources>
