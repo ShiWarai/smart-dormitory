@@ -15,7 +15,8 @@ class AppBarViewModel @Inject constructor(
     private val savedStateHandle: SavedStateHandle
 ) : ViewModel() {
     val defaultTab = AppTab.Home
-    private val _currentScreen = MutableStateFlow(savedStateHandle["currentScreen"] ?: defaultTab.asScreen())
+    private val _currentScreen =
+        MutableStateFlow(savedStateHandle["currentScreen"] ?: defaultTab.asScreen())
     val currentScreen: StateFlow<AppScreen> = _currentScreen
 
 
@@ -29,6 +30,7 @@ class AppBarViewModel @Inject constructor(
         _currentTab.value = appTab
 
     }
+
     fun onNavigate(screen: AppScreen, navHostController: NavHostController? = null) {
         _currentScreen.value = screen
         if (navHostController != null)

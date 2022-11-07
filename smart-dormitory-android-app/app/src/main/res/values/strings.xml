@@ -62,6 +62,10 @@
     <string name="report_new">Новая поломка</string>
     <string name="DescribeYourProblem">Опишите возникшую проблему</string>
     <string name="Send">Отправить</string>
+    <string name="Sender">Отправитель</string>
+    <string name="TimeOfSend">Время Отправки</string>
+    <string name="New">Новое</string>
+    <string name="Done">Решено</string>
 
 
 </resources>

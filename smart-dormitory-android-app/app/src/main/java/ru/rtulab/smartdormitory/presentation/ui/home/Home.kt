@@ -1,19 +1,14 @@
 package ru.rtulab.smartdormitory.presentation.ui.home
 
-import androidx.compose.foundation.gestures.FlingBehavior
-import androidx.compose.foundation.gestures.ScrollableDefaults
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
-import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.stringResource
-import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
-import androidx.compose.ui.unit.sp
 import ru.rtulab.smartdormitory.R
 import ru.rtulab.smartdormitory.presentation.ui.common.H1
 import ru.rtulab.smartdormitory.presentation.ui.common.ObjectCard
@@ -22,7 +17,7 @@ import ru.rtulab.smartdormitory.presentation.ui.home.components.ImageDownloadCar
 
 @Preview
 @Composable
-fun Home(){
+fun Home() {
     //val array = listOf<>()
     Column(
         modifier = Modifier.padding(16.dp)
@@ -38,11 +33,12 @@ fun Home(){
 
         H1(
             Modifier.padding(vertical = 16.dp),
-            stringResource(R.string.SoonEnd))
+            stringResource(R.string.SoonEnd)
+        )
 
         val arraySoonEnd = listOf<Nothing>()
-        LazyColumn(){
-            items(arraySoonEnd){ item ->
+        LazyColumn() {
+            items(arraySoonEnd) { item ->
                 ObjectCardWithDate()//item info
 
             }
@@ -55,16 +51,12 @@ fun Home(){
 
         val arrayRecently = listOf<Nothing>()
         LazyColumn(
-        ){
-            items(arrayRecently){ item ->
+        ) {
+            items(arrayRecently) { item ->
                 ObjectCard()//item info
 
             }
         }
-
-
-
-
 
 
     }

@@ -1,6 +1,5 @@
 package ru.rtulab.smartdormitory.presentation.ui.booking
 
-import android.util.Log
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
@@ -20,7 +19,6 @@ import ru.rtulab.smartdormitory.R
 import ru.rtulab.smartdormitory.presentation.navigation.AppScreen
 import ru.rtulab.smartdormitory.presentation.navigation.LocalNavController
 import ru.rtulab.smartdormitory.presentation.ui.common.*
-import ru.rtulab.smartdormitory.presentation.ui.common.topAppBar.AppBarViewModel
 import ru.rtulab.smartdormitory.presentation.ui.objects.ObjectViewModel
 import ru.rtulab.smartdormitory.presentation.viewmodel.singletonViewModel
 import ru.rtulab.smartdormitory.ui.theme.Green
@@ -33,13 +31,13 @@ fun BookingDetails(
     bookingItemViewModel: BookingItemViewModel = singletonViewModel(),
     bookingViewModel: BookingViewModel = singletonViewModel(),
     objectViewModel: ObjectViewModel = singletonViewModel(),
-    bookingId:String
-){
+    bookingId: String
+) {
     LaunchedEffect(null) {
         bookingItemViewModel.fetchBookingDetails(bookingId)
 
     }
-    DisposableEffect(Unit){
+    DisposableEffect(Unit) {
         onDispose {
             bookingItemViewModel.fetchBookingDetails(bookingId)
         }
@@ -81,9 +79,10 @@ fun BookingDetails(
                                     LoadingError(msg = msg)
                                 },
                                 onSuccess = { booking ->
-                                    objok = objectViewModel.onResourceSuccess(obj,types,rooms)
+                                    objok = objectViewModel.onResourceSuccess(obj, types, rooms)
 
-                                    val objl = booking.toBooking(objok.find { o -> o.id == booking.objectId.toString() }!!)
+                                    val objl =
+                                        booking.toBooking(objok.find { o -> o.id == booking.objectId.toString() }!!)
                                     objl.run {
                                         Column(
                                             modifier = Modifier
@@ -200,6 +199,6 @@ fun BookingDetails(
                         })
                 })
 
-    }
+        }
     )
 }

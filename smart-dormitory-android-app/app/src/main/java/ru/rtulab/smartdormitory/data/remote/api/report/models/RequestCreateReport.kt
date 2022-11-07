@@ -4,8 +4,8 @@ import kotlinx.serialization.Serializable
 
 @Serializable
 data class RequestCreateReport(
-    val description:String,
-    val pictures:List<String>,
-    val objectId:Int,
-    val residentId:Int
+    val description: String,
+    val pictures: List<String>,
+    val objectId: Int,
+    val residentId: Int
 )

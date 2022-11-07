@@ -12,7 +12,7 @@ import androidx.compose.ui.unit.sp
 
 @Preview
 @Composable
-fun NotaficationItem(){
+fun NotaficationItem() {
     Column {
         Row(
             modifier = Modifier.fillMaxWidth(),
@@ -21,7 +21,8 @@ fun NotaficationItem(){
             Row(
                 modifier = Modifier
                     .fillMaxWidth()
-                    .weight(0.5f, false)) {
+                    .weight(0.5f, false)
+            ) {
                 Text(
                     text = "Notafication Name",
                     fontSize = 16.sp
@@ -47,7 +48,7 @@ fun NotaficationItem(){
                 fontSize = 14.sp
             )
         }
-        Divider (
+        Divider(
             modifier = Modifier.padding(vertical = 16.dp)
         )
     }

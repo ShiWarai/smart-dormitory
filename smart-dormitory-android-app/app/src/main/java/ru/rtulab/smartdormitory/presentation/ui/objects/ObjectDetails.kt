@@ -10,7 +10,6 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
-import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.stringResource
@@ -40,7 +39,7 @@ fun ObjectDetals(
     profileViewModel: ProfileViewModel = singletonViewModel(),
     bookingViewModel: BookingViewModel = singletonViewModel(),
     objectViewModel: ObjectViewModel = singletonViewModel(),
-    objectId:String
+    objectId: String
 ) {
 
     val objres = objectViewModel.objectsResourceFlow.collectAsState().value
@@ -72,9 +71,13 @@ fun ObjectDetals(
                             LoadingError(msg = msg)
                         },
                         onSuccess = { obj ->
-                            Log.d("OBJECT",objectId)
-                            Log.d("Objects",objectViewModel.onResourceSuccess(obj, types, rooms).toString())
-                            var objok = objectViewModel.onResourceSuccess(obj, types, rooms).find { it.id == objectId }!!
+                            Log.d("OBJECT", objectId)
+                            Log.d(
+                                "Objects",
+                                objectViewModel.onResourceSuccess(obj, types, rooms).toString()
+                            )
+                            var objok = objectViewModel.onResourceSuccess(obj, types, rooms)
+                                .find { it.id == objectId }!!
 
                             objok.run {
                                 Column(

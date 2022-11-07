@@ -1,7 +1,6 @@
 package ru.rtulab.smartdormitory.presentation.ui.common
 
 import androidx.compose.foundation.BorderStroke
-import androidx.compose.foundation.border
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.text.BasicTextField
@@ -12,16 +11,10 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.draw.clip
 import androidx.compose.ui.focus.FocusRequester
-import androidx.compose.ui.focus.focusModifier
 import androidx.compose.ui.focus.focusOrder
-import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.graphics.SolidColor
 import androidx.compose.ui.text.TextStyle
-import androidx.compose.ui.text.input.TextFieldValue
-import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import ru.rtulab.smartdormitory.ui.theme.White
 import ru.rtulab.smartdormitory.ui.theme.White50
@@ -51,58 +44,60 @@ fun SearchView(
             ),
         color = Color.Transparent,
     ) {
-            Box(
-                contentAlignment = Alignment.Center,
+        Box(
+            contentAlignment = Alignment.Center,
 
             ) {
 
-                if (query.isEmpty()) {
-                    SearchHint(modifier.padding(top = 17.dp, bottom = 17.dp, start = 24.dp, end = 8.dp))
+            if (query.isEmpty()) {
+                SearchHint(modifier.padding(top = 17.dp, bottom = 17.dp, start = 24.dp, end = 8.dp))
+            }
+
+            Row(
+                verticalAlignment = Alignment.CenterVertically
+            ) {
+                Card(
+                    modifier = Modifier
+                        .fillMaxHeight()
+                        .weight(1f),
+                    elevation = 0.dp,
+                    backgroundColor = Color.Transparent,
+                    shape = RoundedCornerShape(8.dp),
+                    border = BorderStroke(1.dp, White50)
+                ) {
+                    BasicTextField(
+                        value = query,
+                        onValueChange = onQueryChange,
+                        modifier = Modifier
+                            .padding(top = 17.dp, bottom = 17.dp, start = 24.dp, end = 8.dp),
+                        singleLine = true,
+                        textStyle = TextStyle(color = White),
+
+                        )
                 }
 
-                Row(
-                    verticalAlignment = Alignment.CenterVertically) {
-                    Card(
-                        modifier = Modifier
-                            .fillMaxHeight()
-                            .weight(1f),
-                        elevation = 0.dp,
-                        backgroundColor = Color.Transparent,
-                        shape = RoundedCornerShape(8.dp),
-                        border = BorderStroke(1.dp, White50)
-                    ) {
-                        BasicTextField(
-                            value = query,
-                            onValueChange = onQueryChange,
+
+                when {
+                    searching -> {
+                        CircularProgressIndicator(
                             modifier = Modifier
-                                .padding(top = 17.dp, bottom = 17.dp, start = 24.dp, end = 8.dp),
-                            singleLine = true,
-                            textStyle = TextStyle(color = White),
-
-                            )
+                                .padding(horizontal = 6.dp)
+                                .size(36.dp)
+                        )
                     }
-
-
-                    when {
-                        searching -> {
-                            CircularProgressIndicator(
-                                modifier = Modifier
-                                    .padding(horizontal = 6.dp)
-                                    .size(36.dp)
-                            )
-                        }
-                        query.isNotEmpty() -> {
-                            IconButton(onClick = onClearQuery) {
-                                Icon(imageVector = Icons.Filled.Close, contentDescription = null)
-                            }
+                    query.isNotEmpty() -> {
+                        IconButton(onClick = onClearQuery) {
+                            Icon(imageVector = Icons.Filled.Close, contentDescription = null)
                         }
                     }
                 }
             }
+        }
 
     }
 
 }
+
 @Composable
 private fun SearchHint(modifier: Modifier = Modifier) {
     Row(

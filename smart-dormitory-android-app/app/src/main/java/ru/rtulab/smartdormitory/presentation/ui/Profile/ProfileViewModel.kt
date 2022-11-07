@@ -5,9 +5,7 @@ import androidx.lifecycle.viewModelScope
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.asStateFlow
-import ru.rtulab.smartdormitory.AuthViewModel
 import ru.rtulab.smartdormitory.common.Resource
-import ru.rtulab.smartdormitory.common.ResponseHandler
 import ru.rtulab.smartdormitory.common.emitInIO
 import ru.rtulab.smartdormitory.common.persistence.AuthStateStorage
 import ru.rtulab.smartdormitory.data.remote.api.profile.models.ProfileDto
@@ -24,8 +22,9 @@ class ProfileViewModel @Inject constructor(
     val profileResourceFlow = _profileResourceFlow.asStateFlow().also {
         fetchMe()
     }
-    fun fetchMe() = _profileResourceFlow.emitInIO(viewModelScope){
-        var resource:Resource<ProfileDto> = Resource.Loading
+
+    fun fetchMe() = _profileResourceFlow.emitInIO(viewModelScope) {
+        var resource: Resource<ProfileDto> = Resource.Loading
         profileRepo.fetchMe(authStateStorage.user!!).handle(
             onSuccess = { me ->
                 resource = Resource.Success(me)

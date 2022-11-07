@@ -1,7 +1,6 @@
 package ru.rtulab.smartdormitory.presentation.ui.common
 
 import android.text.format.DateFormat
-import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.Card
@@ -25,13 +24,13 @@ import java.util.*
 @Composable
 fun ObjectCardWithDate(
     modifier: Modifier = Modifier,
-    name:String="Name",
-    status:String ="Status",
-    type:String = "Type",
-    room:String = "Owner",
-    startTime:String = "2022-10-24T15:37:00.000+00:00",
-    endTime:String = "2023-10-24T15:37:00.000+00:00",
-    statusColor:Color = MaterialTheme.colors.onSecondary
+    name: String = "Name",
+    status: String = "Status",
+    type: String = "Type",
+    room: String = "Owner",
+    startTime: String = "2022-10-24T15:37:00.000+00:00",
+    endTime: String = "2023-10-24T15:37:00.000+00:00",
+    statusColor: Color = MaterialTheme.colors.onSecondary
 ) {
 
     val date: Date = Calendar.getInstance().time
@@ -52,7 +51,6 @@ val weekday: String = DateFormatSymbols().shortWeekdays.get(dayOfWeek)*/
             .padding(top = 8.dp),
         shape = RoundedCornerShape(8.dp),
         backgroundColor = MaterialTheme.colors.secondary
-
 
 
     ) {
@@ -158,19 +156,20 @@ val weekday: String = DateFormatSymbols().shortWeekdays.get(dayOfWeek)*/
 
     }
 }
-fun dMYhm(date2:String):String{
-    val simple =SimpleDateFormat("yyyy-MM-dd'T'kk:mm:ss.SSS+00:00")
+
+fun dMYhm(date2: String): String {
+    val simple = SimpleDateFormat("yyyy-MM-dd'T'kk:mm:ss.SSS+00:00")
     val date = simple.parse(date2)?.time!!
 
-    val z:TimeZone = Calendar.getInstance().timeZone
+    val z: TimeZone = Calendar.getInstance().timeZone
 
 
 
 
-    return DateFormat.format("dd", date) as String+"."+
-            DateFormat.format("MM", date.toLong()) as String+"."+
-            DateFormat.format("yyyy", date.toLong()) as String+" "+
-            DateFormat.format("kk", date.toLong()+z.getRawOffset()) as String+":"+
+    return DateFormat.format("dd", date) as String + "." +
+            DateFormat.format("MM", date.toLong()) as String + "." +
+            DateFormat.format("yyyy", date.toLong()) as String + " " +
+            DateFormat.format("kk", date.toLong() + z.getRawOffset()) as String + ":" +
             DateFormat.format("mm", date.toLong()) as String
 
 }

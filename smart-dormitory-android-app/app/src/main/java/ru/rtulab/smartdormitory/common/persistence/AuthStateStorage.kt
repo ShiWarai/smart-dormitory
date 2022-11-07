@@ -1,20 +1,15 @@
 package ru.rtulab.smartdormitory.common.persistence
 
 import android.content.Context
-import android.util.Base64
 import android.util.Log
-import androidx.datastore.createDataStore
-import androidx.datastore.preferences.core.Preferences
 import androidx.datastore.preferences.core.edit
 import androidx.datastore.preferences.core.stringPreferencesKey
 import androidx.datastore.preferences.createDataStore
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.flow.first
 import kotlinx.coroutines.flow.map
 import kotlinx.coroutines.launch
-import kotlinx.coroutines.runBlocking
-import net.openid.appauth.*
+import net.openid.appauth.AuthState
 
 class AuthStateStorage(context: Context) {
     private companion object {
@@ -32,27 +27,27 @@ class AuthStateStorage(context: Context) {
 
     val authStateFlow = dataStore.data
 
-    var user:String? = null
-    var password:String? = null
+    var user: String? = null
+    var password: String? = null
 
 
     init {
         CoroutineScope(Dispatchers.IO).launch {
-            authStateFlow.collect{
-                 it[USER_ID_KEY]?.let { it1 ->
-                     Log.d("COLLECTCOLLECT", it1)
-                     user = it1
-                 }
-               it[USER_PAYLOAD_KEY]?.let { it1 ->
-                   password = it1
-                   Log.d("COLLECTCOLLECT", password!!)
-               }
+            authStateFlow.collect {
+                it[USER_ID_KEY]?.let { it1 ->
+                    Log.d("COLLECTCOLLECT", it1)
+                    user = it1
+                }
+                it[USER_PAYLOAD_KEY]?.let { it1 ->
+                    password = it1
+                    Log.d("COLLECTCOLLECT", password!!)
+                }
 
             }
         }
     }
 
-   // private fun Preferences.getUserClaims(): List<Any> = UserClaimParser.parse(this[USER_PAYLOAD_KEY])
+    // private fun Preferences.getUserClaims(): List<Any> = UserClaimParser.parse(this[USER_PAYLOAD_KEY])
 
     //val userClaimsFlow = dataStore.data.map { it.getUserClaims() }
 
@@ -84,17 +79,20 @@ class AuthStateStorage(context: Context) {
             prefs.remove(USER_ID_KEY)
         }
     }
+
     suspend fun updateUserId(user: String) {
         dataStore.edit { prefs ->
             prefs[USER_ID_KEY] = user
         }
     }
+
     suspend fun resetUserPassword() {
         dataStore.edit { prefs ->
             prefs.remove(USER_PAYLOAD_KEY)
         }
     }
-    suspend fun updateUserPassword(password:String) {
+
+    suspend fun updateUserPassword(password: String) {
         /*val payload = Base64.decode(
             ("$password"),
             Base64.DEFAULT
@@ -105,7 +103,7 @@ class AuthStateStorage(context: Context) {
     }
 
     suspend fun endSession() {
-       // val config = latestAuthState.authorizationServiceConfiguration
+        // val config = latestAuthState.authorizationServiceConfiguration
         //resetAuthStateWithConfig(config)
         //resetUserClaims()
     }

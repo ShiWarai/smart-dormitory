@@ -17,7 +17,7 @@ import androidx.lifecycle.viewmodel.compose.viewModel
  * @return A [ViewModel] that is an instance of the given [VM] type.
  */
 @Composable
-internal inline fun <reified VM: ViewModel> singletonViewModel(): VM =
+internal inline fun <reified VM : ViewModel> singletonViewModel(): VM =
     viewModel(
         viewModelStoreOwner = LocalActivity.current
     )

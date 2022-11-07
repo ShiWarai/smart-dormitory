@@ -22,5 +22,6 @@ object AuthModule {
 
     @Singleton
     @Provides
-    fun provideAuthService(@ApplicationContext context: Context) = AuthorizationService(context, AppAuthConfiguration.DEFAULT)
+    fun provideAuthService(@ApplicationContext context: Context) =
+        AuthorizationService(context, AppAuthConfiguration.DEFAULT)
 }

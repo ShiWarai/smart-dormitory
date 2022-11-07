@@ -14,14 +14,24 @@ class ObjectRepository @Inject constructor(
     suspend fun fetchAllObjects() = handler {
         objectApi.getAll()
     }
+
     suspend fun fetchAllObjectTypes() = handler {
         objectTypeApi.getAllTypes()
     }
+
     suspend fun fetchAllObjectRooms() = handler {
         objectTypeApi.getAllRooms()
     }
 
     suspend fun fetchObjectDetails(objectId: String) = handler {
         objectApi.getOne(objectId)
+    }
+
+    suspend fun fetchObjectOneType(typeId: String) = handler {
+        objectTypeApi.getOneType(typeId)
+    }
+
+    suspend fun fetchObjectOneRoom(roomId: String) = handler {
+        objectTypeApi.getOneRoom(roomId)
     }
 }

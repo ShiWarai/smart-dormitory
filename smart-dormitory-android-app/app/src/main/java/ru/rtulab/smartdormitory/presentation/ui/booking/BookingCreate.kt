@@ -25,7 +25,7 @@ import ru.rtulab.smartdormitory.ui.theme.White
 fun BookingCreate(
     bookingViewModel: BookingViewModel = singletonViewModel(),
     objectViewModel: ObjectViewModel = singletonViewModel()
-){
+) {
     val types = objectViewModel.objectTypesResourceFlow.collectAsState().value
 
     val objdto = objectViewModel.objectsResourceFlow.collectAsState().value
@@ -72,7 +72,7 @@ fun BookingCreate(
                             Text(text = msg)
                         },
                         onSuccess = { obj ->
-                            var (mSelectedObj, selObj) = remember { mutableStateOf(obj.filter { it.typeId==(ts.find{ t-> t.name == mSelectedType }!!.id)}[0].name) }
+                            var (mSelectedObj, selObj) = remember { mutableStateOf(obj.filter { it.typeId == (ts.find { t -> t.name == mSelectedType }!!.id) }[0].name) }
 
                             val typeObj =
                                 obj.filter { o -> o.typeId == (ts.find { it.name == mSelectedType }!!.id) }
@@ -112,7 +112,8 @@ fun BookingCreate(
                                             text = stringResource(R.string.Continue),
                                             colorFill = White,
                                             onClick = {
-                                                bookingViewModel.cachedObjId.value = obj.find{it.name==mSelectedObj}!!.id
+                                                bookingViewModel.cachedObjId.value =
+                                                    obj.find { it.name == mSelectedObj }!!.id
                                                 navController.navigate("${AppScreen.BookingCreateSecond.navLink}")
                                             }
                                         )
