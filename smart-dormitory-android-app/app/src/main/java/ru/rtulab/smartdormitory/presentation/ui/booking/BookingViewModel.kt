@@ -25,24 +25,38 @@ class BookingViewModel @Inject constructor(
     private val bookingRepo: BookingRepository,
     private val authStateStorage: AuthStateStorage,
 ) : ViewModel() {
-    private var _bookingsResourceFlow = MutableStateFlow<Resource<List<BookingDto>>>(Resource.Loading)
+    private var _bookingsResourceFlow =
+        MutableStateFlow<Resource<List<BookingDto>>>(Resource.Loading)
     val bookingsResourceFlow = _bookingsResourceFlow.asStateFlow().also {
         fetchAllBooking()
     }
-    fun fetchAllBooking() = _bookingsResourceFlow.emitInIO(viewModelScope){
+
+    fun fetchAllBooking() = _bookingsResourceFlow.emitInIO(viewModelScope) {
         bookingRepo.fetchAllBookings()
     }
 
     fun onRefresh() {
         fetchAllBooking()
     }
+
     private var cachedObjects = emptyList<ObjectWithDate>()
 
     private var _bookingsFlow = MutableStateFlow(cachedObjects)
     val bookingsFlow = _bookingsFlow.asStateFlow()
 
-    fun onResourceSuccess(objs: List<BookingDto>,objdto:List<ObjectDto>,objType:List<ObjectType>,objRoom:List<ObjectRoom>) {
-        cachedObjects = objs.map { it.toBooking(objdto.find{ obj -> obj.id == it.objectId}!!.run{toObject(objType.find { t ->t.id == typeId}!!,objRoom.find { t ->t.id == roomId}!!)}) }
+    fun onResourceSuccess(
+        objs: List<BookingDto>,
+        objdto: List<ObjectDto>,
+        objType: List<ObjectType>,
+        objRoom: List<ObjectRoom>
+    ) {
+        cachedObjects = objs.map {
+            it.toBooking(objdto.find { obj -> obj.id == it.objectId }!!.run {
+                toObject(objType.find { t -> t.id == typeId }!!,
+                    objRoom.find { t -> t.id == roomId }!!
+                )
+            })
+        }
         _bookingsFlow.value = cachedObjects
     }
 
@@ -54,16 +68,16 @@ class BookingViewModel @Inject constructor(
 
     var endTime = MutableStateFlow("")
 
-    fun createBook() = viewModelScope.launch(Dispatchers.IO){
-        val bookingDto:RequestBookingCreate = RequestBookingCreate(
+    fun createBook() = viewModelScope.launch(Dispatchers.IO) {
+        val bookingDto: RequestBookingCreate = RequestBookingCreate(
             objectId = cachedObjId.value,
-            reason ="Ответочка от мобилочки",
+            reason = "Ответочка от мобилочки",
             begin = beginTime.value,
             end = endTime.value
         )
         bookingRepo.createBook(bookingDto).handle(
             onSuccess = {
-                if(it.isSuccessful)
+                if (it.isSuccessful)
                     showSnackbar("Успешно забронирован")
             },
             onError = {
@@ -71,6 +85,7 @@ class BookingViewModel @Inject constructor(
             }
         )
     }
+
     private suspend fun showSnackbar(text: String) {
         snackbarHostState.showSnackbar(text)
     }

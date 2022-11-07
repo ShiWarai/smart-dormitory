@@ -33,7 +33,7 @@ import ru.rtulab.smartdormitory.ui.theme.Red
 @Preview
 @Composable
 fun Objects(
-     objectViewModel: ObjectViewModel = singletonViewModel()
+    objectViewModel: ObjectViewModel = singletonViewModel()
 ) {
     val navController = LocalNavController.current
 
@@ -51,168 +51,170 @@ fun Objects(
             Text(text = msg)
         },
         onSuccess = { rooms ->
-    typesResource.handle(
-        onLoading = {
-            LoadingIndicator()
-        },
-        onError = { msg ->
-            Text(text = msg)
-        },
-        onSuccess = { types ->
+            typesResource.handle(
+                onLoading = {
+                    LoadingIndicator()
+                },
+                onError = { msg ->
+                    Text(text = msg)
+                },
+                onSuccess = { types ->
 
-            val tabs = types.map { t -> t.name }
+                    val tabs = types.map { t -> t.name }
 
-            var isRefreshing by remember { mutableStateOf(false) }
+                    var isRefreshing by remember { mutableStateOf(false) }
 
-            val stringSearch = remember { mutableStateOf("") }
+                    val stringSearch = remember { mutableStateOf("") }
 
 
-            Column(
-                modifier = Modifier
-                    .fillMaxSize(),
-            ) {
-                Surface(
-
-                    color = MaterialTheme.colors.primarySurface,
-                    contentColor = contentColorFor(MaterialTheme.colors.primarySurface),
-                    elevation = AppBarDefaults.TopAppBarElevation
-                ) {
-                    AppBarTabRow(
-
-                        pagerState = pagerState,
-                        tabs = tabs,
+                    Column(
                         modifier = Modifier
-                            .fillMaxWidth(),
-                        isScrollable = true
-                    )
-                }
-
-                HorizontalPager(
-                    modifier = Modifier
-                        .fillMaxSize(),
-                    verticalAlignment = Alignment.Top,
-                    count = tabs.size,
-                    state = pagerState,
-                    itemSpacing = 1.dp
-
-                ) { currentPage ->
-                    SwipeRefresh(
-                        modifier = Modifier.fillMaxSize(),
-                        state = rememberSwipeRefreshState(isRefreshing),
-                        onRefresh = {
-                            objectViewModel.onRefresh()
-                        }
+                            .fillMaxSize(),
                     ) {
-                        Column(
-                            modifier = Modifier
-                                .padding(horizontal = 16.dp)
+                        Surface(
+
+                            color = MaterialTheme.colors.primarySurface,
+                            contentColor = contentColorFor(MaterialTheme.colors.primarySurface),
+                            elevation = AppBarDefaults.TopAppBarElevation
                         ) {
+                            AppBarTabRow(
 
-                            Row(
+                                pagerState = pagerState,
+                                tabs = tabs,
                                 modifier = Modifier
-                                    .padding(vertical = 24.dp),
-                                verticalAlignment = Alignment.CenterVertically
-                            ) {
-                                Column(
-                                    modifier = Modifier
-                                        .fillMaxWidth()
-                                        .weight(0.9f),
-                                    verticalArrangement = Arrangement.Center
-                                ) {
-                                    SideEffect {
-                                        objectViewModel.onSearch(stringSearch.value)
-                                    }
-                                    SearchView(
-                                        query = stringSearch.value,
-                                        onQueryChange = {
-                                            stringSearch.value = it
-                                            objectViewModel.onSearch(stringSearch.value)
-                                        },
-                                        onClearQuery = { stringSearch.value = "" },
-                                        searching = false,
-
-                                        )
-                                    DisposableEffect(Unit) {
-                                        //focusRequester.requestFocus()
-                                        onDispose {
-                                            objectViewModel.onSearch("")
-                                        }
-                                    }
-                                }
-                                Column(
-                                    modifier = Modifier
-                                        .fillMaxWidth()
-                                        .weight(0.1f),
-                                    verticalArrangement = Arrangement.Center
-                                ) {
-
-                                    IconButton(
-                                        modifier = Modifier
-                                            .height(36.dp)
-                                            .width(36.dp),
-                                        onClick = { /*to Filter*/ }
-                                    ) {
-                                        Icon(
-                                            painter = painterResource(R.drawable.filter),
-                                            contentDescription = stringResource(R.string.filter),
-                                            modifier = Modifier
-                                        )
-                                    }
-                                }
-                            }
-                            Row(
-                                modifier = Modifier
-                                    .padding(bottom = 16.dp),
-                                verticalAlignment = Alignment.CenterVertically,
-                                horizontalArrangement = Arrangement.Center
-                            ) {
-                                Text(
-                                    text = tabs[currentPage],
-                                    color = MaterialTheme.colors.onBackground,
-                                    fontSize = 14.sp,
-                                    lineHeight = 20.sp
-                                )
-                            }
-                            objectsDto.handle(
-                                onLoading = {
-                                    LoadingIndicator()
-                                },
-                                onError = { msg ->
-                                    Text(text = msg)
-                                },
-                                onSuccess = { dto ->
-                                    objectViewModel.onResourceSuccess(dto, types,rooms)
-                                    LazyColumn(
-                                        modifier = Modifier
-                                            .fillMaxSize(),
-                                    ) {
-                                        items(objs) { o ->
-                                            ObjectCard(
-                                                modifier = Modifier
-                                                    .padding(vertical = 4.dp)
-                                                    .clickable {
-                                                        navController.navigate("${AppScreen.ObjectDetails.navLink}/${o.id}")
-
-                                                    },
-                                                name = o.name,
-                                                status = if (o.status == 200) stringResource(R.string.free) else stringResource(
-                                                    R.string.busy
-                                                ),
-                                                type = o.type,
-                                                room ="Комната №${o.room}",
-                                                statusColor = if (o.status == 200) Green else Red
-                                            )
-                                        }
-                                    }
-                                }
+                                    .fillMaxWidth(),
+                                isScrollable = true
                             )
                         }
 
+                        HorizontalPager(
+                            modifier = Modifier
+                                .fillMaxSize(),
+                            verticalAlignment = Alignment.Top,
+                            count = tabs.size,
+                            state = pagerState,
+                            itemSpacing = 1.dp
+
+                        ) { currentPage ->
+                            SwipeRefresh(
+                                modifier = Modifier.fillMaxSize(),
+                                state = rememberSwipeRefreshState(isRefreshing),
+                                onRefresh = {
+                                    objectViewModel.onRefresh()
+                                }
+                            ) {
+                                Column(
+                                    modifier = Modifier
+                                        .padding(horizontal = 16.dp)
+                                ) {
+
+                                    Row(
+                                        modifier = Modifier
+                                            .padding(vertical = 24.dp),
+                                        verticalAlignment = Alignment.CenterVertically
+                                    ) {
+                                        Column(
+                                            modifier = Modifier
+                                                .fillMaxWidth()
+                                                .weight(0.9f),
+                                            verticalArrangement = Arrangement.Center
+                                        ) {
+                                            SideEffect {
+                                                objectViewModel.onSearch(stringSearch.value)
+                                            }
+                                            SearchView(
+                                                query = stringSearch.value,
+                                                onQueryChange = {
+                                                    stringSearch.value = it
+                                                    objectViewModel.onSearch(stringSearch.value)
+                                                },
+                                                onClearQuery = { stringSearch.value = "" },
+                                                searching = false,
+
+                                                )
+                                            DisposableEffect(Unit) {
+                                                //focusRequester.requestFocus()
+                                                onDispose {
+                                                    objectViewModel.onSearch("")
+                                                }
+                                            }
+                                        }
+                                        Column(
+                                            modifier = Modifier
+                                                .fillMaxWidth()
+                                                .weight(0.1f),
+                                            verticalArrangement = Arrangement.Center
+                                        ) {
+
+                                            IconButton(
+                                                modifier = Modifier
+                                                    .height(36.dp)
+                                                    .width(36.dp),
+                                                onClick = { /*to Filter*/ }
+                                            ) {
+                                                Icon(
+                                                    painter = painterResource(R.drawable.filter),
+                                                    contentDescription = stringResource(R.string.filter),
+                                                    modifier = Modifier
+                                                )
+                                            }
+                                        }
+                                    }
+                                    Row(
+                                        modifier = Modifier
+                                            .padding(bottom = 16.dp),
+                                        verticalAlignment = Alignment.CenterVertically,
+                                        horizontalArrangement = Arrangement.Center
+                                    ) {
+                                        Text(
+                                            text = tabs[currentPage],
+                                            color = MaterialTheme.colors.onBackground,
+                                            fontSize = 14.sp,
+                                            lineHeight = 20.sp
+                                        )
+                                    }
+                                    objectsDto.handle(
+                                        onLoading = {
+                                            LoadingIndicator()
+                                        },
+                                        onError = { msg ->
+                                            Text(text = msg)
+                                        },
+                                        onSuccess = { dto ->
+                                            objectViewModel.onResourceSuccess(dto, types, rooms)
+                                            LazyColumn(
+                                                modifier = Modifier
+                                                    .fillMaxSize(),
+                                            ) {
+                                                items(objs) { o ->
+                                                    ObjectCard(
+                                                        modifier = Modifier
+                                                            .padding(vertical = 4.dp)
+                                                            .clickable {
+                                                                navController.navigate("${AppScreen.ObjectDetails.navLink}/${o.id}")
+
+                                                            },
+                                                        name = o.name,
+                                                        status = if (o.status == 200) stringResource(
+                                                            R.string.free
+                                                        ) else stringResource(
+                                                            R.string.busy
+                                                        ),
+                                                        type = o.type,
+                                                        room = "Комната №${o.room}",
+                                                        statusColor = if (o.status == 200) Green else Red
+                                                    )
+                                                }
+                                            }
+                                        }
+                                    )
+                                }
+
+                            }
+                        }
                     }
                 }
-            }
-        }
-    )
+            )
         }
     )
 }

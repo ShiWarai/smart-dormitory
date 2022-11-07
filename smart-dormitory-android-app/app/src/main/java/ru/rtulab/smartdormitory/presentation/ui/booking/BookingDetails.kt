@@ -31,13 +31,13 @@ fun BookingDetails(
     bookingItemViewModel: BookingItemViewModel = singletonViewModel(),
     bookingViewModel: BookingViewModel = singletonViewModel(),
     objectViewModel: ObjectViewModel = singletonViewModel(),
-    bookingId:String
-){
+    bookingId: String
+) {
     LaunchedEffect(null) {
         bookingItemViewModel.fetchBookingDetails(bookingId)
 
     }
-    DisposableEffect(Unit){
+    DisposableEffect(Unit) {
         onDispose {
             bookingItemViewModel.fetchBookingDetails(bookingId)
         }
@@ -79,9 +79,10 @@ fun BookingDetails(
                                     LoadingError(msg = msg)
                                 },
                                 onSuccess = { booking ->
-                                    objok = objectViewModel.onResourceSuccess(obj,types,rooms)
+                                    objok = objectViewModel.onResourceSuccess(obj, types, rooms)
 
-                                    val objl = booking.toBooking(objok.find { o -> o.id == booking.objectId.toString() }!!)
+                                    val objl =
+                                        booking.toBooking(objok.find { o -> o.id == booking.objectId.toString() }!!)
                                     objl.run {
                                         Column(
                                             modifier = Modifier
@@ -198,6 +199,6 @@ fun BookingDetails(
                         })
                 })
 
-    }
+        }
     )
 }

@@ -28,10 +28,10 @@ import ru.rtulab.smartdormitory.ui.theme.Accent50
 @Preview
 @Composable
 fun ImageDownloadCard(
-    modifier:Modifier = Modifier,
-    imageLink: String =""
-    ){
-    val imageSize = remember{ mutableStateOf(Size.Zero)}
+    modifier: Modifier = Modifier,
+    imageLink: String = ""
+) {
+    val imageSize = remember { mutableStateOf(Size.Zero) }
     Box(
         modifier = modifier
             .fillMaxWidth()
@@ -68,7 +68,7 @@ fun ImageDownloadCard(
                 .size(with(LocalDensity.current) { imageSize.value.toDpSize() }),
             verticalArrangement = Arrangement.Bottom,
 
-        ) {
+            ) {
 
             Card(
                 modifier = Modifier

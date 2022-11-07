@@ -23,11 +23,11 @@ import java.util.*
 
 @Composable
 fun ReportCard(
-    report:Report,
-    modifier:Modifier = Modifier,
-    status:String,
-    statusColor:Color = Green
-){
+    report: Report,
+    modifier: Modifier = Modifier,
+    status: String,
+    statusColor: Color = Green
+) {
     val date: Date = Calendar.getInstance().time
 
     val dayOfTheWeek = DateFormat.format("EE", date) as String // Th
@@ -35,135 +35,135 @@ fun ReportCard(
     val monthString = DateFormat.format("MMM", date) as String // Jun
     val monthNumber = DateFormat.format("MM", date) as String // 06
     val year = DateFormat.format("yyyy", date) as String // 2022
-report.run {
+    report.run {
 
-    Card(
-        modifier = modifier
-            .fillMaxWidth()
-            .padding(top = 8.dp),
-        shape = RoundedCornerShape(8.dp),
-        backgroundColor = MaterialTheme.colors.secondary
+        Card(
+            modifier = modifier
+                .fillMaxWidth()
+                .padding(top = 8.dp),
+            shape = RoundedCornerShape(8.dp),
+            backgroundColor = MaterialTheme.colors.secondary
 
 
-    ) {
-        Column(
-            modifier = Modifier
-                .padding(12.dp)
         ) {
-            Row(
+            Column(
                 modifier = Modifier
-                    .fillMaxWidth(),
-                verticalAlignment = Alignment.CenterVertically
-
+                    .padding(12.dp)
             ) {
                 Row(
                     modifier = Modifier
-                        .fillMaxWidth()
-                        .weight(0.5f, false)
+                        .fillMaxWidth(),
+                    verticalAlignment = Alignment.CenterVertically
+
+                ) {
+                    Row(
+                        modifier = Modifier
+                            .fillMaxWidth()
+                            .weight(0.5f, false)
+                    ) {
+                        Text(
+                            text = objectFull.name,
+                            fontSize = 16.sp,
+                            color = MaterialTheme.colors.onSecondary
+
+                        )
+                    }
+                    Row(
+                        modifier = Modifier
+                            .fillMaxWidth()
+                            .weight(0.5f, false),
+                        horizontalArrangement = Arrangement.End,
+                    ) {
+                        Text(
+
+                            text = status,
+                            fontSize = 14.sp,
+                            color = statusColor
+                        )
+                    }
+                }
+                Row() {
+                    Text(
+                        text = objectFull.type,
+                        fontSize = 11.sp,
+                        color = White50
+                    )
+                }
+                Row(
+                    modifier = Modifier.padding(top = 4.dp)
                 ) {
                     Text(
-                        text = objectFull.name,
-                        fontSize = 16.sp,
+                        text = "Комната №" + objectFull.room,
+                        fontSize = 14.sp,
                         color = MaterialTheme.colors.onSecondary
 
                     )
                 }
+                Divider(
+                    modifier = Modifier.padding(vertical = 8.dp)
+
+                )
                 Row(
-                    modifier = Modifier
-                        .fillMaxWidth()
-                        .weight(0.5f, false),
-                    horizontalArrangement = Arrangement.End,
+                    modifier = Modifier.fillMaxWidth()
                 ) {
-                    Text(
 
-                        text = status,
-                        fontSize = 14.sp,
-                        color = statusColor
-                    )
-                }
-            }
-            Row() {
-                Text(
-                    text = objectFull.type,
-                    fontSize = 11.sp,
-                    color = White50
-                )
-            }
-            Row(
-                modifier = Modifier.padding(top = 4.dp)
-            ) {
-                Text(
-                    text = "Комната №"+objectFull.room,
-                    fontSize = 14.sp,
-                    color = MaterialTheme.colors.onSecondary
+                    /*Column(
+                        modifier = Modifier
+                            .fillMaxWidth()
+                            .weight(0.5f, false),
+                    ) {
+                        Row() {
+                            Text(
+                                text = stringResource(R.string.TimeOfSend),
+                                fontSize = 11.sp
+                            )
+                        }
+                        Row() {
+                            Text(
+                                text = dMYhm("2022-11-07-"),
+                                fontSize = 14.sp
+                            )
+                        }
+                    }*/
+                    Column(
+                        modifier = Modifier
+                            .fillMaxWidth()
+                            .weight(0.5f, false),
+                    ) {
+                        Row() {
+                            Text(
+                                text = stringResource(R.string.Sender),
+                                fontSize = 11.sp
+                            )
+                        }
+                        Row() {
+                            Text(
+                                text = resident.fio,
+                                fontSize = 14.sp
+                            )
+                        }
+                    }
 
-                )
-            }
-            Divider(
-                modifier = Modifier.padding(vertical = 8.dp)
-
-            )
-            Row(
-                modifier = Modifier.fillMaxWidth()
-            ) {
-
-                /*Column(
-                    modifier = Modifier
-                        .fillMaxWidth()
-                        .weight(0.5f, false),
-                ) {
-                    Row() {
-                        Text(
-                            text = stringResource(R.string.TimeOfSend),
-                            fontSize = 11.sp
-                        )
-                    }
-                    Row() {
-                        Text(
-                            text = dMYhm("2022-11-07-"),
-                            fontSize = 14.sp
-                        )
-                    }
-                }*/
-                Column(
-                    modifier = Modifier
-                        .fillMaxWidth()
-                        .weight(0.5f, false),
-                ) {
-                    Row() {
-                        Text(
-                            text = stringResource(R.string.Sender),
-                            fontSize = 11.sp
-                        )
-                    }
-                    Row() {
-                        Text(
-                            text = resident.fio,
-                            fontSize = 14.sp
-                        )
-                    }
                 }
 
             }
-
         }
     }
-}
-fun dMYhm(date2:String):String{
-    val simple = SimpleDateFormat("yyyy-MM-dd'T'kk:mm:ss.SSS+00:00")
-    val date = simple.parse(date2)?.time!!
+    fun dMYhm(date2: String): String {
+        val simple = SimpleDateFormat("yyyy-MM-dd'T'kk:mm:ss.SSS+00:00")
+        val date = simple.parse(date2)?.time!!
 
-    val z: TimeZone = Calendar.getInstance().timeZone
-
+        val z: TimeZone = Calendar.getInstance().timeZone
 
 
 
-    return DateFormat.format("dd", date) as String+"."+
-            DateFormat.format("MM", date.toLong()) as String+"."+
-            DateFormat.format("yyyy", date.toLong()) as String+" "+
-            DateFormat.format("kk", date.toLong()+z.getRawOffset()) as String+":"+
-            DateFormat.format("mm", date.toLong()) as String
 
-}
+        return DateFormat.format("dd", date) as String + "." +
+                DateFormat.format("MM", date.toLong()) as String + "." +
+                DateFormat.format("yyyy", date.toLong()) as String + " " +
+                DateFormat.format("kk", date.toLong() + z.getRawOffset()) as String + ":" +
+                DateFormat.format("mm", date.toLong()) as String
+
+    }
 
 }

@@ -20,17 +20,17 @@ import ru.rtulab.smartdormitory.R
 @Composable
 fun Title(
     modifier: Modifier = Modifier
-){
+) {
     Row(
-        modifier=modifier,
+        modifier = modifier,
         verticalAlignment = Alignment.CenterVertically
     ) {
         Image(
-            painter = painterResource(R.drawable.smartdormitorylogo ),
+            painter = painterResource(R.drawable.smartdormitorylogo),
             contentDescription = stringResource(id = R.string.SmartDormitory)
         )
         Column(
-            Modifier.padding(start=16.dp)
+            Modifier.padding(start = 16.dp)
         ) {
             Text(
                 text = stringResource(R.string.Smart),

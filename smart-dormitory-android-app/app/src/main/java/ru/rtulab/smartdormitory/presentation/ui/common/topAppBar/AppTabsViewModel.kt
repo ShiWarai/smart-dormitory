@@ -42,6 +42,7 @@ class AppTabsViewModel @Inject constructor(
     fun allAppTabsAccess(): List<AppTab> {
         return _appTabs.value.filter { it.accessible }
     }
+
     fun fourAppTabsAccess(): List<AppTab> {
         return _appFourTabs.value.filter { it.accessible }
     }

@@ -34,9 +34,9 @@ import ru.rtulab.smartdormitory.presentation.ui.report.Reports
 fun NavigationGraph(
     navController: NavHostController,
     appBarViewModel: AppBarViewModel = viewModel(),
-    ){
+) {
 
-val allScreens = AppScreen.getAll(LocalContext.current)
+    val allScreens = AppScreen.getAll(LocalContext.current)
 
     val resources = LocalContext.current.resources
     val navBackStackEntry by navController.currentBackStackEntryAsState()
@@ -56,7 +56,8 @@ val allScreens = AppScreen.getAll(LocalContext.current)
             // To correctly reflect that in bottom navigation, this code is needed
             if (navBackStackEntry?.destination?.route == appBarViewModel.defaultTab.startDestination)
                 appBarViewModel.setCurrentTab(appBarViewModel.defaultTab)
-        } catch (e: NullPointerException) {}
+        } catch (e: NullPointerException) {
+        }
     }
     // Disabling system "Back" button during transition
     BackHandler(LocalSharedElementsRootScope.current!!.isRunningTransition) {}
@@ -64,7 +65,8 @@ val allScreens = AppScreen.getAll(LocalContext.current)
 
     NavHost(
         navController = navController,
-        startDestination = appBarViewModel.defaultTab.route){
+        startDestination = appBarViewModel.defaultTab.route
+    ) {
         homeGraph(
             resources = resources
         )
@@ -84,26 +86,27 @@ val allScreens = AppScreen.getAll(LocalContext.current)
 }
 
 private fun NavGraphBuilder.homeGraph(
-    resources:Resources
-){
-   navigation(
-       startDestination = AppTab.Home.startDestination,
-       route = AppTab.Home.route
-   ) {
-           composable(AppScreen.Home.route){
-               Home()
-           }
-       }
+    resources: Resources
+) {
+    navigation(
+        startDestination = AppTab.Home.startDestination,
+        route = AppTab.Home.route
+    ) {
+        composable(AppScreen.Home.route) {
+            Home()
+        }
+    }
 
 }
+
 private fun NavGraphBuilder.objectsGraph(
-    resources:Resources
-){
+    resources: Resources
+) {
     navigation(
         startDestination = AppTab.Objects.startDestination,
         route = AppTab.Objects.route
     ) {
-        composable(AppScreen.Objects.route){
+        composable(AppScreen.Objects.route) {
             Objects(
             )
         }
@@ -112,7 +115,7 @@ private fun NavGraphBuilder.objectsGraph(
             deepLinks = listOf(
                 navDeepLink {
                     uriPattern =
-                        "https://"+ resources.getString(R.string.HOST_URI) +"/objects/{objectId}"
+                        "https://" + resources.getString(R.string.HOST_URI) + "/objects/{objectId}"
                 }
             )
         ) {
@@ -123,22 +126,23 @@ private fun NavGraphBuilder.objectsGraph(
     }
 
 }
+
 private fun NavGraphBuilder.bookingGraph(
-    resources:Resources
-){
+    resources: Resources
+) {
     navigation(
         startDestination = AppTab.Booking.startDestination,
         route = AppTab.Booking.route
     ) {
-        composable(AppScreen.Booking.route){
+        composable(AppScreen.Booking.route) {
             Booking(
 
             )
         }
-        composable(AppScreen.BookingCreate.route){
+        composable(AppScreen.BookingCreate.route) {
             BookingCreate()
         }
-        composable(AppScreen.BookingCreateSecond.route){
+        composable(AppScreen.BookingCreateSecond.route) {
             BookingCreateSecond()
         }
         composable(
@@ -146,44 +150,46 @@ private fun NavGraphBuilder.bookingGraph(
             deepLinks = listOf(
                 navDeepLink {
                     uriPattern =
-                        "https://"+"${resources.getString(R.string.HOST_URI)}/booking/{bookingId}"
+                        "https://" + "${resources.getString(R.string.HOST_URI)}/booking/{bookingId}"
                 }
             )
         ) {
 
-                BookingDetails(
-                    bookingId = it.arguments?.getString("bookingId")!!
-                )
+            BookingDetails(
+                bookingId = it.arguments?.getString("bookingId")!!
+            )
         }
     }
 
 }
+
 private fun NavGraphBuilder.profileGraph(
-    resources:Resources
-){
+    resources: Resources
+) {
     navigation(
         startDestination = AppTab.Profile.startDestination,
         route = AppTab.Profile.route
     ) {
-        composable(AppScreen.Profile.route){
+        composable(AppScreen.Profile.route) {
             Profile()
         }
 
     }
 
 }
+
 @ExperimentalPagerApi
 private fun NavGraphBuilder.reportGraph(
-    resources:Resources
-){
+    resources: Resources
+) {
     navigation(
         startDestination = AppTab.Reports.startDestination,
         route = AppTab.Reports.route
     ) {
-        composable(AppScreen.Reports.route){
+        composable(AppScreen.Reports.route) {
             Reports()
         }
-        composable(AppScreen.ReportCreate.route){
+        composable(AppScreen.ReportCreate.route) {
             ReportDescription()
         }
 

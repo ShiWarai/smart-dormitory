@@ -12,9 +12,9 @@ import ru.rtulab.smartdormitory.ui.theme.White
 @Composable
 fun H1(
     modifier: Modifier = Modifier,
-    text:String = "H1",
+    text: String = "H1",
 
-){
+    ) {
     Text(
         modifier = modifier,
         text = text,

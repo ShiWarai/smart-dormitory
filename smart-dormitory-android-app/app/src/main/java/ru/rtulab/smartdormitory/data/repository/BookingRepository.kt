@@ -13,12 +13,13 @@ class BookingRepository @Inject constructor(
         bookingApi.getAll()
 
     }
-    suspend fun fetchBookingDetails(bookingId:String) = handler {
+
+    suspend fun fetchBookingDetails(bookingId: String) = handler {
         bookingApi.getOne(bookingId)
 
     }
 
-    suspend fun createBook(booking:RequestBookingCreate) = handler {
+    suspend fun createBook(booking: RequestBookingCreate) = handler {
         bookingApi.createBook(booking)
 
     }

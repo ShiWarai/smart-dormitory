@@ -17,7 +17,7 @@ import ru.rtulab.smartdormitory.presentation.ui.home.components.ImageDownloadCar
 
 @Preview
 @Composable
-fun Home(){
+fun Home() {
     //val array = listOf<>()
     Column(
         modifier = Modifier.padding(16.dp)
@@ -33,11 +33,12 @@ fun Home(){
 
         H1(
             Modifier.padding(vertical = 16.dp),
-            stringResource(R.string.SoonEnd))
+            stringResource(R.string.SoonEnd)
+        )
 
         val arraySoonEnd = listOf<Nothing>()
-        LazyColumn(){
-            items(arraySoonEnd){ item ->
+        LazyColumn() {
+            items(arraySoonEnd) { item ->
                 ObjectCardWithDate()//item info
 
             }
@@ -50,16 +51,12 @@ fun Home(){
 
         val arrayRecently = listOf<Nothing>()
         LazyColumn(
-        ){
-            items(arrayRecently){ item ->
+        ) {
+            items(arrayRecently) { item ->
                 ObjectCard()//item info
 
             }
         }
-
-
-
-
 
 
     }

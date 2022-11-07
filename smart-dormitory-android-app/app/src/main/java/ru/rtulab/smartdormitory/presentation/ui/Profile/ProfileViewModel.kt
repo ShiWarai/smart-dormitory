@@ -22,8 +22,9 @@ class ProfileViewModel @Inject constructor(
     val profileResourceFlow = _profileResourceFlow.asStateFlow().also {
         fetchMe()
     }
-    fun fetchMe() = _profileResourceFlow.emitInIO(viewModelScope){
-        var resource:Resource<ProfileDto> = Resource.Loading
+
+    fun fetchMe() = _profileResourceFlow.emitInIO(viewModelScope) {
+        var resource: Resource<ProfileDto> = Resource.Loading
         profileRepo.fetchMe(authStateStorage.user!!).handle(
             onSuccess = { me ->
                 resource = Resource.Success(me)

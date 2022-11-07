@@ -8,20 +8,20 @@ import ru.rtulab.smartdormitory.data.remote.api.booking.models.RequestBookingCre
 interface BookingApi {
 
     @GET("/reservations/")
-    suspend fun getAll():List<BookingDto>
+    suspend fun getAll(): List<BookingDto>
 
     @GET("/reservations/{bookingId}")
     suspend fun getOne(
-        @Path("bookingId") bookingId:String
-    ):BookingDto
+        @Path("bookingId") bookingId: String
+    ): BookingDto
 
     @POST("/reservations/")
     suspend fun createBook(
-        @Body booking:RequestBookingCreate
-    ):Response<Unit>
+        @Body booking: RequestBookingCreate
+    ): Response<Unit>
 
     @DELETE("/reservations/{bookingId}/cancel")
     suspend fun cancel(
         @Path("bookingId") bookingId: String
-    ):Response<Unit>
+    ): Response<Unit>
 }

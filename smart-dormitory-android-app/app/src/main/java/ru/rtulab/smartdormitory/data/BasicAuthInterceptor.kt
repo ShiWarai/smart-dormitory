@@ -7,11 +7,11 @@ import okhttp3.Response
 import ru.rtulab.smartdormitory.common.persistence.AuthStateStorage
 
 
-class BasicAuthInterceptor(authStateStorage:AuthStateStorage) : Interceptor {
+class BasicAuthInterceptor(authStateStorage: AuthStateStorage) : Interceptor {
     private var credentials: String? = null;
     private val auth: AuthStateStorage = authStateStorage;
     override fun intercept(chain: Interceptor.Chain): Response {
-        if(credentials == null)
+        if (credentials == null)
             this.credentials = Credentials.basic(auth.user.toString(), auth.password.toString())
 
         val request: Request = chain.request()

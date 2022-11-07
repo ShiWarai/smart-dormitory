@@ -3,15 +3,15 @@ package ru.rtulab.smartdormitory.common
 sealed class Resource<out T> {
     class Success<T>(val data: T) : Resource<T>()
     class Error(val msg: String) : Resource<Nothing>()
-    object Loading: Resource<Nothing>()
-    object Empty: Resource<Nothing>()
+    object Loading : Resource<Nothing>()
+    object Empty : Resource<Nothing>()
 
-     inline fun handle(
+    inline fun handle(
         onSuccess: (data: T) -> Unit = {},
         onError: (msg: String) -> Unit = {},
         onLoading: () -> Unit = {},
     ) {
-        when(this) {
+        when (this) {
             is Success -> onSuccess(data)
             is Error -> onError(msg)
             Loading -> onLoading()
@@ -49,7 +49,7 @@ class ResourceGroup(
      *        casting to your desired type.
      * @sample ru.rtulab.presentation.screens.reports.ReportsViewModel.fetchReports
      */
-     fun handle(
+    fun handle(
         onSuccess: (data: List<*>) -> Unit,
         onError: (msg: String) -> Unit
     ) {

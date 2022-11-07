@@ -17,20 +17,19 @@ import ru.rtulab.smartdormitory.ui.theme.White50
 @Preview
 @Composable
 fun ObjectCard(
-    modifier:Modifier = Modifier,
-    name:String="Name",
-    status:String ="Status",
-    type:String = "Type",
-    room:String = "Owner",
+    modifier: Modifier = Modifier,
+    name: String = "Name",
+    status: String = "Status",
+    type: String = "Type",
+    room: String = "Owner",
 
-    statusColor:Color = MaterialTheme.colors.onSecondary
+    statusColor: Color = MaterialTheme.colors.onSecondary
 ) {
     Card(
         modifier = modifier
             .fillMaxWidth(),
         shape = RoundedCornerShape(8.dp),
         backgroundColor = MaterialTheme.colors.secondary
-
 
 
     ) {

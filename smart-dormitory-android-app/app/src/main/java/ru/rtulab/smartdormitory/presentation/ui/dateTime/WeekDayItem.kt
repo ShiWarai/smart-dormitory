@@ -24,13 +24,13 @@ import ru.rtulab.smartdormitory.ui.theme.White
 @Preview
 @Composable
 fun WeekDayItem(
-     weekDay:String = "Mn",
-     date:String = "10",
-     active:Boolean = false,
-     onClick:()->Unit
+    weekDay: String = "Mn",
+    date: String = "10",
+    active: Boolean = false,
+    onClick: () -> Unit
 
-){
-    if(!active) {
+) {
+    if (!active) {
         Card(
             modifier = Modifier.padding(0.dp),
             shape = RoundedCornerShape(8.dp),
@@ -40,7 +40,7 @@ fun WeekDayItem(
             onClick = onClick
 
 
-            ) {
+        ) {
             Column(
                 modifier = Modifier.padding(10.dp, 4.dp),
                 verticalArrangement = Arrangement.Center,
@@ -62,7 +62,7 @@ fun WeekDayItem(
                 }
             }
         }
-    }else{
+    } else {
         Card(
             modifier = Modifier.padding(0.dp),
             //shape = RoundedCornerShape(8.dp),

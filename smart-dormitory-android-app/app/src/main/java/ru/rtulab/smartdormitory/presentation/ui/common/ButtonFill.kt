@@ -16,17 +16,17 @@ import ru.rtulab.smartdormitory.ui.theme.White
 @Preview
 @Composable
 fun ButtonFill(
-    modifier: Modifier=Modifier,
-    text:String ="Button",
-    colorFill:Color = MaterialTheme.colors.primary,
-    onClick:() -> Unit = {},
+    modifier: Modifier = Modifier,
+    text: String = "Button",
+    colorFill: Color = MaterialTheme.colors.primary,
+    onClick: () -> Unit = {},
 
-    ){
+    ) {
 
     Card(
         backgroundColor = colorFill,
         modifier = modifier.fillMaxWidth(),
-        onClick =  onClick ,
+        onClick = onClick,
         shape = RoundedCornerShape(8.dp),
         elevation = 0.dp
     )
@@ -39,7 +39,7 @@ fun ButtonFill(
                 modifier = Modifier
                     .padding(0.dp, 12.dp),
                 text = text,
-                color = if(colorFill== Accent) White else Accent,
+                color = if (colorFill == Accent) White else Accent,
                 fontSize = 14.sp,
                 lineHeight = 20.sp
             )

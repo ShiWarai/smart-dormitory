@@ -6,14 +6,14 @@ import ru.rtulab.smartdormitory.data.remote.api.profile.models.ProfileDto
 
 @Serializable
 data class ReportDto(
-    val id:Int,
-    val description:String,
-    val isDone:Boolean,
+    val id: Int,
+    val description: String,
+    val isDone: Boolean,
     val pictures: List<String>,
     val objectId: Int,
     val residentId: Int
-){
-    fun toReport(obj:ObjectWithoutDate,resident:ProfileDto) = Report(
+) {
+    fun toReport(obj: ObjectWithoutDate, resident: ProfileDto) = Report(
         id = id,
         description = description,
         isDone = isDone,

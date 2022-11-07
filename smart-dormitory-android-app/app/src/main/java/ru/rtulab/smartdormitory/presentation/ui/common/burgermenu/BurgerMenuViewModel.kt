@@ -7,11 +7,10 @@ import javax.inject.Inject
 @HiltViewModel
 class BurgerMenuViewModel @Inject constructor(
 
-):ViewModel()
-{
+) : ViewModel() {
     var bottomSheetState = false//hide
 
     fun reverseState() {
-        bottomSheetState  = !bottomSheetState
+        bottomSheetState = !bottomSheetState
     }
 }

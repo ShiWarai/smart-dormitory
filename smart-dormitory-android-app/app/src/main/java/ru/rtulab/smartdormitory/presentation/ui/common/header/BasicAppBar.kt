@@ -24,12 +24,16 @@ import ru.rtulab.smartdormitory.ui.theme.White
 
 @Composable
 fun BasicTopAppBar(
-    scope:CoroutineScope,
+    scope: CoroutineScope,
     text: String,
     drawerState: DrawerState,
-    backgroundColor:Color = MaterialTheme.colors.background,
+    backgroundColor: Color = MaterialTheme.colors.background,
     onBackAction: () -> Unit = emptyBackAction,
-    options: List<AppBarOption> = listOf(AppBarOption.Clickable(icon = Icons.Default.Notifications, onClick = {/**/}))
+    options: List<AppBarOption> = listOf(
+        AppBarOption.Clickable(
+            icon = Icons.Default.Notifications,
+            onClick = {/**/ })
+    )
 ) {
     TopAppBar(
         backgroundColor = backgroundColor
@@ -51,14 +55,14 @@ fun BasicTopAppBar(
                         Icon(
                             Icons.Default.Close,
                             contentDescription = stringResource(R.string.close),
-                        tint = White
+                            tint = White
                         )
                     }
                     Spacer(modifier = Modifier.width(16.dp))
-                }else{
+                } else {
                     IconButton(onClick = {
                         scope.launch {
-                            if(drawerState.isOpen)
+                            if (drawerState.isOpen)
                                 drawerState.close()
                             else
                                 drawerState.open()

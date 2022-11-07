@@ -9,12 +9,12 @@ class ProfileRepository @Inject constructor(
     private val handler: ResponseHandler
 ) {
 
-    suspend fun fetchMe(studentId:String) = handler {
+    suspend fun fetchMe(studentId: String) = handler {
         profileApi.getMe(studentId)
 
     }
 
-    suspend fun fetchById(studentId:String) = handler {
+    suspend fun fetchById(studentId: String) = handler {
         profileApi.getById(studentId)
 
     }

@@ -4,10 +4,10 @@ import kotlinx.serialization.Serializable
 
 @Serializable
 data class Profile(
-    val imageLink:String,
-    val login:String,
-    val room:String,
-    val role:String,
-    val lastName:String,
-    val firstName:String
+    val imageLink: String,
+    val login: String,
+    val room: String,
+    val role: String,
+    val lastName: String,
+    val firstName: String
 )

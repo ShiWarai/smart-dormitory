@@ -16,20 +16,20 @@ import androidx.compose.ui.unit.sp
 @Preview
 @Composable
 fun ButtonOutlined(
-    modifier: Modifier=Modifier,
+    modifier: Modifier = Modifier,
 
-    text:String ="Button",
-    colorBorder:Color = MaterialTheme.colors.onPrimary,
-    onClick:() -> Unit = {},
+    text: String = "Button",
+    colorBorder: Color = MaterialTheme.colors.onPrimary,
+    onClick: () -> Unit = {},
 
-    ){
+    ) {
     Card(
         backgroundColor = Color.Transparent,
         modifier = modifier.fillMaxWidth(),
-        onClick =  onClick ,
+        onClick = onClick,
         shape = RoundedCornerShape(8.dp),
         elevation = 0.dp,
-        border = BorderStroke(1.dp,colorBorder)
+        border = BorderStroke(1.dp, colorBorder)
     )
     {
         Row(

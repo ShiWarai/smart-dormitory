@@ -20,12 +20,12 @@ import ru.rtulab.smartdormitory.R
 @Preview
 @Composable
 fun Clock(
-    modifier: Modifier =Modifier,
-    twoDig:Int,
-    twoDigfun:(Int)->Unit,
-    twoDigM:Int,
-    twoDigMfun:(Int)->Unit,
-){
+    modifier: Modifier = Modifier,
+    twoDig: Int,
+    twoDigfun: (Int) -> Unit,
+    twoDigM: Int,
+    twoDigMfun: (Int) -> Unit,
+) {
     Column(
         modifier = modifier
     ) {
@@ -37,25 +37,25 @@ fun Clock(
             ) {
                 Row(
                     Modifier.clickable {
-                        twoDigfun(((twoDig+1)%24))
+                        twoDigfun(((twoDig + 1) % 24))
                     }
                 ) {
-                    Image(painter =  painterResource(R.drawable.up), contentDescription = "Up")
+                    Image(painter = painterResource(R.drawable.up), contentDescription = "Up")
                 }
                 Row(
                     modifier = Modifier
                         .padding(vertical = 10.dp)
                 ) {
                     BigTimeItem(
-                        twoDigits = if (twoDig<10) "0$twoDig" else twoDig.toString()
+                        twoDigits = if (twoDig < 10) "0$twoDig" else twoDig.toString()
                     )
                 }
                 Row(
                     Modifier.clickable {
-                        twoDigfun(((twoDig+23)%24))
+                        twoDigfun(((twoDig + 23) % 24))
                     }
                 ) {
-                    Image(painter =  painterResource(R.drawable.down), contentDescription = "Up")
+                    Image(painter = painterResource(R.drawable.down), contentDescription = "Up")
                 }
             }
             Column(
@@ -68,32 +68,32 @@ fun Clock(
                     fontSize = 32.sp,
                     fontWeight = FontWeight.Bold,
 
-                )
+                    )
             }
             Column(
                 horizontalAlignment = Alignment.CenterHorizontally
             ) {
                 Row(
                     Modifier.clickable {
-                        twoDigMfun(((twoDigM+1)%60))
+                        twoDigMfun(((twoDigM + 1) % 60))
                     }
                 ) {
-                    Image(painter =  painterResource(R.drawable.up), contentDescription = "Up")
+                    Image(painter = painterResource(R.drawable.up), contentDescription = "Up")
                 }
                 Row(
                     modifier = Modifier
                         .padding(vertical = 10.dp)
                 ) {
                     BigTimeItem(
-                        twoDigits = if (twoDigM<10) "0$twoDigM" else twoDigM.toString()
+                        twoDigits = if (twoDigM < 10) "0$twoDigM" else twoDigM.toString()
                     )
                 }
                 Row(
                     Modifier.clickable {
-                        twoDigMfun(((twoDigM+59)%60))
+                        twoDigMfun(((twoDigM + 59) % 60))
                     }
                 ) {
-                    Image(painter =  painterResource(R.drawable.down), contentDescription = "Up")
+                    Image(painter = painterResource(R.drawable.down), contentDescription = "Up")
                 }
             }
         }

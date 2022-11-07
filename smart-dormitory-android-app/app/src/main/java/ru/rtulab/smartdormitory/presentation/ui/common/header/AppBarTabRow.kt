@@ -23,6 +23,7 @@ fun AppBarTabRow(
     isScrollable: Boolean = false
 ) {
     val coroutineScope = rememberCoroutineScope()
+
     @Composable
     fun tabRowContent() {
         tabs.forEachIndexed { index, it ->
@@ -65,7 +66,7 @@ fun AppBarTabRow(
             selectedTabIndex = pagerState.currentPage,
             indicator = { tabPositions ->
                 TabRowDefaults.Indicator(
-                    Modifier. pagerTabIndicatorOffset(pagerState, tabPositions)
+                    Modifier.pagerTabIndicatorOffset(pagerState, tabPositions)
                 )
             },
             contentColor = MaterialTheme.colors.primary

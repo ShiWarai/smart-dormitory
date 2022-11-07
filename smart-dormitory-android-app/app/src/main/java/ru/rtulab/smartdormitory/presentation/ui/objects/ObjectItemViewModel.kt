@@ -11,7 +11,7 @@ class ObjectItemViewModel @Inject constructor(
     private val objectRepository: ObjectRepository,
     private val savedState: SavedStateHandle
 
-):ViewModel(){
+) : ViewModel() {
 
     /*private var _objectResourceFlow = MutableStateFlow<Resource<ObjectDto>>(Resource.Loading)
     val objectResourceFlow = _objectResourceFlow.asStateFlow().also {

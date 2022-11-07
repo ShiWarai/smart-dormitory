@@ -6,11 +6,11 @@ import ru.rtulab.smartdormitory.data.remote.api.objects.models.ObjectDto
 
 interface ObjectApi {
     @GET("/objects/")
-    suspend fun getAll():List<ObjectDto>
+    suspend fun getAll(): List<ObjectDto>
 
     @GET("/objects/{id}")
     suspend fun getOne(
         @Path("id") objectId: String
-    ):ObjectDto
+    ): ObjectDto
 
 }

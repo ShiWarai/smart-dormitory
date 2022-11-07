@@ -27,8 +27,8 @@ import ru.rtulab.smartdormitory.ui.theme.White50
 
 @Composable
 fun Authtorization(
-    onLogin:(String,String) ->Unit,
-){
+    onLogin: (String, String) -> Unit,
+) {
 
     val selectedLogin = remember { mutableStateOf("") }
     var selectedPassword = remember { mutableStateOf("") }
@@ -43,13 +43,13 @@ fun Authtorization(
     ) {
         Title(
             modifier = Modifier
-                .padding(top =72.dp)
+                .padding(top = 72.dp)
         )
 
         OutlinedTextField(
 
             value = selectedLogin.value,
-            onValueChange ={ selectedLogin.value = it },
+            onValueChange = { selectedLogin.value = it },
             modifier = Modifier
                 .fillMaxWidth()
                 .padding(top = 32.dp),
@@ -58,7 +58,8 @@ fun Authtorization(
                     text = stringResource(R.string.login),
                     fontSize = 14.sp,
                     color = White50
-                )},
+                )
+            },
 
             shape = RoundedCornerShape(8.dp),
             colors = TextFieldDefaults.outlinedTextFieldColors(
@@ -71,11 +72,11 @@ fun Authtorization(
             ),
             singleLine = true,
 
-        )
+            )
         OutlinedTextField(
 
             value = selectedPassword.value,
-            onValueChange ={ selectedPassword.value = it },
+            onValueChange = { selectedPassword.value = it },
             modifier = Modifier
                 .fillMaxWidth()
                 .padding(top = 16.dp),
@@ -84,7 +85,8 @@ fun Authtorization(
                     text = stringResource(R.string.password),
                     fontSize = 14.sp,
                     color = White50
-                )},
+                )
+            },
 
             shape = RoundedCornerShape(8.dp),
             colors = TextFieldDefaults.outlinedTextFieldColors(
@@ -100,11 +102,11 @@ fun Authtorization(
             )
         ButtonFill(
             modifier = Modifier
-                .padding(top=24.dp),
+                .padding(top = 24.dp),
             text = stringResource(R.string.Enter),
             colorFill = White,
             onClick = {
-                onLogin(selectedLogin.value,selectedPassword.value)
+                onLogin(selectedLogin.value, selectedPassword.value)
             }
         )
         Text(

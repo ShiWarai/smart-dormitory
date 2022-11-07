@@ -35,7 +35,7 @@ import ru.rtulab.smartdormitory.ui.theme.White
 fun Reports(
     reportViewModel: ReportViewModel = singletonViewModel(),
 
-) {
+    ) {
     val navController = LocalNavController.current
 
     val pagerState = rememberPagerState()
@@ -47,7 +47,7 @@ fun Reports(
         stringResource(R.string.Ended),
 
 
-    )
+        )
     val reportsDto = reportViewModel.reportsDtoFlow.collectAsState().value
 
     Scaffold(
@@ -58,7 +58,7 @@ fun Reports(
                 modifier = Modifier
                     .padding(16.dp),
                 onClick = {
-                  //  navController.navigate("${AppScreen.BookingCreate.navLink}")
+                    //  navController.navigate("${AppScreen.BookingCreate.navLink}")
 
                 },
                 shape = RoundedCornerShape(8.dp),
@@ -116,7 +116,7 @@ fun Reports(
                             .fillMaxSize()
                             .padding(horizontal = 16.dp)
                     ) {
-                        reportsDto.handle (
+                        reportsDto.handle(
                             onLoading = {
                                 LoadingIndicator()
                             },
@@ -137,7 +137,7 @@ fun Reports(
                                                 ReportCard(
                                                     modifier = Modifier
                                                         .clickable {
-                                                          //  navController.navigate("${AppScreen.BookingDetails.navLink}/${b.id}")
+                                                            //  navController.navigate("${AppScreen.BookingDetails.navLink}/${b.id}")
 
                                                         },
                                                     report = report!!,
@@ -158,7 +158,7 @@ fun Reports(
                                                 ReportCard(
                                                     modifier = Modifier
                                                         .clickable {
-                                                         //   navController.navigate("${AppScreen.BookingDetails.navLink}/${b.id}")
+                                                            //   navController.navigate("${AppScreen.BookingDetails.navLink}/${b.id}")
 
                                                         },
                                                     report = report!!,

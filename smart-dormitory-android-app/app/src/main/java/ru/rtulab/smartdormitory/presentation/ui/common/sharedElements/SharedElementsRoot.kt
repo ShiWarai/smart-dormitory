@@ -121,7 +121,8 @@ private fun SharedElementTransitionsOverlay(rootState: SharedElementsRootState) 
     rootState.trackers.forEach { (key, tracker) ->
         key(key) {
             val transition = tracker.transition
-            val start = (tracker.state as? SharedElementsTracker.State.StartElementPositioned)?.startElement
+            val start =
+                (tracker.state as? SharedElementsTracker.State.StartElementPositioned)?.startElement
             if (transition != null || (start != null && start.bounds == null)) {
                 val startElement = start ?: transition!!.startElement
                 val startScreenKey = startElement.info.screenKey

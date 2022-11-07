@@ -37,14 +37,14 @@ class MainActivity : ComponentActivity() {
                     modifier = Modifier.fillMaxSize(),
                     color = MaterialTheme.colors.background
                 ) {
-                    if(authState){
+                    if (authState) {
                         CompositionLocalProvider(
                             LocalNavController provides rememberNavController(),
                             LocalActivity provides this
                         ) {
                             SmartDormitory()
                         }
-                    }else{
+                    } else {
                         Authtorization(authViewModel::onLoginEvent)
                     }
 

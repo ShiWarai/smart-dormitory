@@ -39,7 +39,7 @@ fun ObjectDetals(
     profileViewModel: ProfileViewModel = singletonViewModel(),
     bookingViewModel: BookingViewModel = singletonViewModel(),
     objectViewModel: ObjectViewModel = singletonViewModel(),
-    objectId:String
+    objectId: String
 ) {
 
     val objres = objectViewModel.objectsResourceFlow.collectAsState().value
@@ -71,9 +71,13 @@ fun ObjectDetals(
                             LoadingError(msg = msg)
                         },
                         onSuccess = { obj ->
-                            Log.d("OBJECT",objectId)
-                            Log.d("Objects",objectViewModel.onResourceSuccess(obj, types, rooms).toString())
-                            var objok = objectViewModel.onResourceSuccess(obj, types, rooms).find { it.id == objectId }!!
+                            Log.d("OBJECT", objectId)
+                            Log.d(
+                                "Objects",
+                                objectViewModel.onResourceSuccess(obj, types, rooms).toString()
+                            )
+                            var objok = objectViewModel.onResourceSuccess(obj, types, rooms)
+                                .find { it.id == objectId }!!
 
                             objok.run {
                                 Column(

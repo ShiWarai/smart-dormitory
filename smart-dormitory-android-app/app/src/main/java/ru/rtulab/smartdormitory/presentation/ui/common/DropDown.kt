@@ -28,11 +28,19 @@ import ru.rtulab.smartdormitory.ui.theme.White
 @Composable
 fun DropDown(
     modifier: Modifier = Modifier,
-    label:String="label",
-    array:List<String> = listOf("Delhi", "Mumbai", "Chennai", "Kolkata", "Hyderabad", "Bengaluru", "Pune"),
-    seltext:String,
-    selTextfun:(String)->Unit
-){
+    label: String = "label",
+    array: List<String> = listOf(
+        "Delhi",
+        "Mumbai",
+        "Chennai",
+        "Kolkata",
+        "Hyderabad",
+        "Bengaluru",
+        "Pune"
+    ),
+    seltext: String,
+    selTextfun: (String) -> Unit
+) {
 
     // Declaring a boolean value to store
     // the expanded state of the Text Field
@@ -42,7 +50,7 @@ fun DropDown(
 
     // Create a string value to store the selected city
 
-    var mTextFieldSize = remember { mutableStateOf(Size.Zero)}
+    var mTextFieldSize = remember { mutableStateOf(Size.Zero) }
 
     // Up Icon when expanded and down icon when collapsed
     val icon = if (mExpanded.value)
@@ -67,7 +75,7 @@ fun DropDown(
                 },
             label = { Text(text = label) },
             trailingIcon = {
-                Icon(icon,"contentDescription",
+                Icon(icon, "contentDescription",
                     Modifier.clickable { mExpanded.value = !mExpanded.value })
             },
             shape = RoundedCornerShape(8.dp),
@@ -80,15 +88,15 @@ fun DropDown(
             expanded = mExpanded.value,
             onDismissRequest = { mExpanded.value = false },
             modifier = Modifier
-                .width(with(LocalDensity.current){mTextFieldSize.value.width.toDp()})
-                    .background(White)
+                .width(with(LocalDensity.current) { mTextFieldSize.value.width.toDp() })
+                .background(White)
         ) {
             array.forEach { label ->
                 DropdownMenuItem(
                     onClick = {
-                    selTextfun( label)
-                    mExpanded.value = false
-                },
+                        selTextfun(label)
+                        mExpanded.value = false
+                    },
                 ) {
                     Text(
                         text = label,

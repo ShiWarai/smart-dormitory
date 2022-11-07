@@ -6,9 +6,9 @@ import ru.rtulab.smartdormitory.data.remote.api.profile.models.ProfileDto
 
 @Serializable
 data class Report(
-    val id:Int,
-    val description:String,
-    val isDone:Boolean,
+    val id: Int,
+    val description: String,
+    val isDone: Boolean,
     val pictures: List<String>,
     val objectFull: ObjectWithoutDate,
     val resident: ProfileDto

@@ -33,7 +33,7 @@ fun ReportDescription(
 
     var description = remember { mutableStateOf("") }
 
-    val focusRequester = remember { FocusRequester()}
+    val focusRequester = remember { FocusRequester() }
 
     Scaffold(
         scaffoldState = rememberScaffoldState(snackbarHostState = reportViewModel.snackbarHostState)
@@ -54,7 +54,7 @@ fun ReportDescription(
                         .padding(top = 24.dp),
                     text = stringResource(R.string.DescribeProblem)
                 )
-                LaunchedEffect(Unit ){
+                LaunchedEffect(Unit) {
                     focusRequester.requestFocus()
                 }
                 OutlinedTextField(

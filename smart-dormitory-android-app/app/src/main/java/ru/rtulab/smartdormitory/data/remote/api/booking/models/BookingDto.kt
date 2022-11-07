@@ -6,15 +6,15 @@ import ru.rtulab.smartdormitory.data.remote.api.objects.ObjectWithoutDate
 
 @Serializable
 data class BookingDto(
-    val id:Int,
-    val reason:String,
-    val isCanceled:Boolean,
-    val begin:String,
-    val end:String,
-    val objectId:Int,
-    val status:String,
-    val resident:Int
-){
+    val id: Int,
+    val reason: String,
+    val isCanceled: Boolean,
+    val begin: String,
+    val end: String,
+    val objectId: Int,
+    val status: String,
+    val resident: Int
+) {
     fun toBooking(obj: ObjectWithoutDate) = ObjectWithDate(
         id = id.toString(),
         objectId = obj.id,

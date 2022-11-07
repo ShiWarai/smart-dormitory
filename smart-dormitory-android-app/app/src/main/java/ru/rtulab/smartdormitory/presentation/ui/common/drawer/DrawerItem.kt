@@ -21,12 +21,12 @@ import ru.rtulab.smartdormitory.presentation.navigation.AppTab
 @Composable
 fun DrawerItem(
     tab: AppTab,
-    scope:CoroutineScope,
+    scope: CoroutineScope,
     selected: Boolean,
     onItemClick: (AppTab) -> Unit,
     selectedContentColor: Color = LocalContentColor.current,
-    unselectedContentColor: Color = selectedContentColor.copy(alpha = ContentAlpha.medium))
-{
+    unselectedContentColor: Color = selectedContentColor.copy(alpha = ContentAlpha.medium)
+) {
     val background = if (selected) selectedContentColor else unselectedContentColor
     Row(
         verticalAlignment = Alignment.CenterVertically,
@@ -34,13 +34,14 @@ fun DrawerItem(
             .fillMaxWidth()
             .clickable(onClick = {
 
-                onItemClick(tab) }
+                onItemClick(tab)
+            }
             )
             .height(45.dp)
             .background(background)
             .padding(start = 10.dp)
     ) {
-        Icon( painter = painterResource(tab.icon), contentDescription = tab.route)
+        Icon(painter = painterResource(tab.icon), contentDescription = tab.route)
 
         Spacer(modifier = Modifier.width(7.dp))
         Text(

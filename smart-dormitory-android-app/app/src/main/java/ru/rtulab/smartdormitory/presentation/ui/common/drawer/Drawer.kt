@@ -11,8 +11,8 @@ import ru.rtulab.smartdormitory.ui.theme.White
 
 @Composable
 fun Drawer(
-    backgroundColor:Color = Accent,
-    contentColor:Color = White,
+    backgroundColor: Color = Accent,
+    contentColor: Color = White,
     content: @Composable () -> Unit
 ) {
 

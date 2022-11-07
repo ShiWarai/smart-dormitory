@@ -22,50 +22,50 @@ import ru.rtulab.smartdormitory.ui.theme.White
 @Preview
 @Composable
 fun BottomSheet(
-    title:String ="Title",
-    text:String = "Text"
-){
+    title: String = "Title",
+    text: String = "Text"
+) {
 
     Column(
-        modifier =Modifier
+        modifier = Modifier
             .fillMaxWidth()
             .padding(16.dp)
     ) {
-     Row(
-         verticalAlignment = Alignment.CenterVertically
-     ) {
-         Column(
-             modifier = Modifier
-                 .fillMaxWidth()
-                 .weight(0.9f,false)
-         ) {
-             Text(
-                 text = title,
-                 fontSize = 24.sp,
-                 lineHeight = 24.sp,
-                 color = White,
-                 fontWeight = FontWeight.Bold
-             )
-         }
-         Column(
-             modifier = Modifier
-             .fillMaxWidth()
-             .weight(0.1f,false),
+        Row(
+            verticalAlignment = Alignment.CenterVertically
+        ) {
+            Column(
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .weight(0.9f, false)
+            ) {
+                Text(
+                    text = title,
+                    fontSize = 24.sp,
+                    lineHeight = 24.sp,
+                    color = White,
+                    fontWeight = FontWeight.Bold
+                )
+            }
+            Column(
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .weight(0.1f, false),
 
-                 horizontalAlignment =Alignment.End
-         ) {
-             Icon(
-                 imageVector = Icons.Default.Close,
-                 contentDescription = stringResource(R.string.close),
-                 tint = White
-             )
-         }
-     }
-     Text(
-         text = text,
-         fontSize = 16.sp,
-         lineHeight = 22.sp,
-         color = White
-     )
+                horizontalAlignment = Alignment.End
+            ) {
+                Icon(
+                    imageVector = Icons.Default.Close,
+                    contentDescription = stringResource(R.string.close),
+                    tint = White
+                )
+            }
+        }
+        Text(
+            text = text,
+            fontSize = 16.sp,
+            lineHeight = 22.sp,
+            color = White
+        )
     }
 }

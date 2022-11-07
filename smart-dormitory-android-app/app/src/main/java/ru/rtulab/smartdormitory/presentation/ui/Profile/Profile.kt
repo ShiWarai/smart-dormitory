@@ -30,15 +30,15 @@ import ru.rtulab.smartdormitory.ui.theme.White50
 @Composable
 fun Profile(
     profileViewModel: ProfileViewModel = singletonViewModel()
-){
+) {
     val profileDto = profileViewModel.profileResourceFlow.collectAsState().value
-    val login ="19И1337"
+    val login = "19И1337"
     val room = "228"
     val role = "Житель"
     val lastname = "LastName"
     val firstname = "FirstName"
 
-    val imageLink =""
+    val imageLink = ""
 
     val array = listOf<Nothing>()
     profileDto.handle(

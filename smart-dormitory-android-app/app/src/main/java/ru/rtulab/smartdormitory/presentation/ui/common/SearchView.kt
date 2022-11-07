@@ -44,58 +44,60 @@ fun SearchView(
             ),
         color = Color.Transparent,
     ) {
-            Box(
-                contentAlignment = Alignment.Center,
+        Box(
+            contentAlignment = Alignment.Center,
 
             ) {
 
-                if (query.isEmpty()) {
-                    SearchHint(modifier.padding(top = 17.dp, bottom = 17.dp, start = 24.dp, end = 8.dp))
+            if (query.isEmpty()) {
+                SearchHint(modifier.padding(top = 17.dp, bottom = 17.dp, start = 24.dp, end = 8.dp))
+            }
+
+            Row(
+                verticalAlignment = Alignment.CenterVertically
+            ) {
+                Card(
+                    modifier = Modifier
+                        .fillMaxHeight()
+                        .weight(1f),
+                    elevation = 0.dp,
+                    backgroundColor = Color.Transparent,
+                    shape = RoundedCornerShape(8.dp),
+                    border = BorderStroke(1.dp, White50)
+                ) {
+                    BasicTextField(
+                        value = query,
+                        onValueChange = onQueryChange,
+                        modifier = Modifier
+                            .padding(top = 17.dp, bottom = 17.dp, start = 24.dp, end = 8.dp),
+                        singleLine = true,
+                        textStyle = TextStyle(color = White),
+
+                        )
                 }
 
-                Row(
-                    verticalAlignment = Alignment.CenterVertically) {
-                    Card(
-                        modifier = Modifier
-                            .fillMaxHeight()
-                            .weight(1f),
-                        elevation = 0.dp,
-                        backgroundColor = Color.Transparent,
-                        shape = RoundedCornerShape(8.dp),
-                        border = BorderStroke(1.dp, White50)
-                    ) {
-                        BasicTextField(
-                            value = query,
-                            onValueChange = onQueryChange,
+
+                when {
+                    searching -> {
+                        CircularProgressIndicator(
                             modifier = Modifier
-                                .padding(top = 17.dp, bottom = 17.dp, start = 24.dp, end = 8.dp),
-                            singleLine = true,
-                            textStyle = TextStyle(color = White),
-
-                            )
+                                .padding(horizontal = 6.dp)
+                                .size(36.dp)
+                        )
                     }
-
-
-                    when {
-                        searching -> {
-                            CircularProgressIndicator(
-                                modifier = Modifier
-                                    .padding(horizontal = 6.dp)
-                                    .size(36.dp)
-                            )
-                        }
-                        query.isNotEmpty() -> {
-                            IconButton(onClick = onClearQuery) {
-                                Icon(imageVector = Icons.Filled.Close, contentDescription = null)
-                            }
+                    query.isNotEmpty() -> {
+                        IconButton(onClick = onClearQuery) {
+                            Icon(imageVector = Icons.Filled.Close, contentDescription = null)
                         }
                     }
                 }
             }
+        }
 
     }
 
 }
+
 @Composable
 private fun SearchHint(modifier: Modifier = Modifier) {
     Row(

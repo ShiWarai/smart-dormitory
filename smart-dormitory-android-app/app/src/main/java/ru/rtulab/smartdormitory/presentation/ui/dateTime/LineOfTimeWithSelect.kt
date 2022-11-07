@@ -21,13 +21,18 @@ import ru.rtulab.smartdormitory.ui.theme.White
 @Preview
 @Composable
 fun LineOfTimeWithSelect(
-    starttime:String = "0",
-    endtime:String = "1",
-    arrayBusyness: List<TimeAndStatus> = mutableListOf(TimeAndStatus(false,0f to 0.3f),TimeAndStatus(true,0.3f to 0.6f),TimeAndStatus(false,0.6f to 0.9f),TimeAndStatus(true,0.9f to 1f)),
-    startSelect:Float = 0.5f,
-    endSelect:Float = 0.6f,
+    starttime: String = "0",
+    endtime: String = "1",
+    arrayBusyness: List<TimeAndStatus> = mutableListOf(
+        TimeAndStatus(false, 0f to 0.3f),
+        TimeAndStatus(true, 0.3f to 0.6f),
+        TimeAndStatus(false, 0.6f to 0.9f),
+        TimeAndStatus(true, 0.9f to 1f)
+    ),
+    startSelect: Float = 0.5f,
+    endSelect: Float = 0.6f,
     colorSelect: Color = Color.Red,
-    ){
+) {
     val density = LocalDensity.current
     val linearIndicatorHeight = 14.dp
     var linearWidth = 240.0f
@@ -46,33 +51,37 @@ fun LineOfTimeWithSelect(
                 .background(Color.Transparent),
 
 
-        ) {
-            val y = with(density) {(linearIndicatorHeight).toPx()/2}
-            val x =  linearWidth
+            ) {
+            val y = with(density) { (linearIndicatorHeight).toPx() / 2 }
+            val x = linearWidth
 
-            for(item in arrayBusyness) {
+            for (item in arrayBusyness) {
                 if (item.active)
                     drawLine(
                         color = Color.Blue,
                         start = Offset(item.startToEnd.first * x, y),
                         end = Offset(item.startToEnd.second * x, y),
-                        strokeWidth = with(density) {(linearIndicatorHeight-2.dp).toPx()}
+                        strokeWidth = with(density) { (linearIndicatorHeight - 2.dp).toPx() }
                     )
                 else
                     drawLine(
                         color = White,
-                        start = Offset(item.startToEnd.first * x, y+with(density) { 1.dp.toPx()}),
-                        end = Offset(item.startToEnd.second * x, y+with(density) { 1.dp.toPx()}),
-                        strokeWidth = with(density) {(linearIndicatorHeight-2.dp).toPx()}
+                        start = Offset(
+                            item.startToEnd.first * x,
+                            y + with(density) { 1.dp.toPx() }),
+                        end = Offset(item.startToEnd.second * x, y + with(density) { 1.dp.toPx() }),
+                        strokeWidth = with(density) { (linearIndicatorHeight - 2.dp).toPx() }
                     )
             }
-            var stroke = Stroke(width = with(density) {3.dp.toPx()})
+            var stroke = Stroke(width = with(density) { 3.dp.toPx() })
 
             drawRect(
                 color = colorSelect,
-                topLeft = Offset(startSelect * x ,with(density) { 0.dp.toPx()}),
+                topLeft = Offset(startSelect * x, with(density) { 0.dp.toPx() }),
                 style = stroke,
-                size = Size((endSelect-startSelect) * x,with(density) {(linearIndicatorHeight).toPx()})
+                size = Size(
+                    (endSelect - startSelect) * x,
+                    with(density) { (linearIndicatorHeight).toPx() })
             )
 
         }

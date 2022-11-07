@@ -41,7 +41,7 @@ fun SmartDormitory(
     appTabsViewModel: AppTabsViewModel = singletonViewModel(),
     bottomSheetViewModel: BottomSheetViewModel = singletonViewModel(),
     burgerMenuViewModel: BurgerMenuViewModel = singletonViewModel(),
-){
+) {
 
     val currentScreen by appBarViewModel.currentScreen.collectAsState()
 
@@ -62,7 +62,7 @@ fun SmartDormitory(
     }
     LaunchedEffect(burgerMenuViewModel.bottomSheetState) {
         if (!burgerMenuViewModel.bottomSheetState)
-            burgerMenuViewModel.bottomSheetState =!burgerMenuViewModel.bottomSheetState
+            burgerMenuViewModel.bottomSheetState = !burgerMenuViewModel.bottomSheetState
     }
 
     val tabs = appTabsViewModel.appTabs.collectAsState().value
@@ -83,9 +83,11 @@ fun SmartDormitory(
         ),
         sheetBackgroundColor = Accent,
 
-    ) {
+        ) {
         Scaffold(
-            modifier = if(bottomSheetViewModel.visibilityAsState.collectAsState().value) Modifier.blur(50.dp) else Modifier.blur(0.dp),
+            modifier = if (bottomSheetViewModel.visibilityAsState.collectAsState().value) Modifier.blur(
+                50.dp
+            ) else Modifier.blur(0.dp),
             scaffoldState = scaffoldState,
             drawerContent = {
                 val currentTab by appBarViewModel.currentTab.collectAsState()
@@ -137,7 +139,7 @@ fun SmartDormitory(
                     }
                 }
             },
-            topBar ={
+            topBar = {
                 when (currentScreen) {
                     AppScreen.BookingCreate -> BasicTopAppBar(
                         scope = scope,
@@ -192,7 +194,12 @@ fun SmartDormitory(
                         val currentDestination = navBackStackEntry?.destination
 
                         BottomNavigationItem(
-                            icon = {Icon( painter = painterResource(tab.icon), contentDescription = tab.route) },
+                            icon = {
+                                Icon(
+                                    painter = painterResource(tab.icon),
+                                    contentDescription = tab.route
+                                )
+                            },
                             selectedContentColor = White,
                             unselectedContentColor = White50,
                             alwaysShowLabel = false,
