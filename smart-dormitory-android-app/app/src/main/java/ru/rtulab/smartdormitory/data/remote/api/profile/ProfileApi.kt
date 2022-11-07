@@ -11,4 +11,9 @@ interface ProfileApi {
         @Path("student_id") student_id:String
     ): ProfileDto
 
+    @GET("/residents/by_id/{student_id}")
+    suspend fun getById(
+        @Path("student_id") student_id:String
+    ): ProfileDto
+
 }

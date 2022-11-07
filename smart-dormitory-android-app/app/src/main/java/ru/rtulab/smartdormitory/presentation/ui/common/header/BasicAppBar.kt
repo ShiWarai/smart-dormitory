@@ -16,13 +16,18 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.launch
+import kotlinx.coroutines.runBlocking
 import ru.rtulab.smartdormitory.R
 import ru.rtulab.smartdormitory.ui.theme.Accent
 import ru.rtulab.smartdormitory.ui.theme.White
 
 @Composable
 fun BasicTopAppBar(
+    scope:CoroutineScope,
     text: String,
+    drawerState: DrawerState,
     backgroundColor:Color = MaterialTheme.colors.background,
     onBackAction: () -> Unit = emptyBackAction,
     options: List<AppBarOption> = listOf(AppBarOption.Clickable(icon = Icons.Default.Notifications, onClick = {/**/}))
@@ -52,7 +57,14 @@ fun BasicTopAppBar(
                     }
                     Spacer(modifier = Modifier.width(16.dp))
                 }else{
-                    IconButton(onClick = {/*open*/}) {
+                    IconButton(onClick = {
+                        scope.launch {
+                            if(drawerState.isOpen)
+                                drawerState.close()
+                            else
+                                drawerState.open()
+                        }
+                    }) {
                         Icon(
                             Icons.Default.Menu,
                             contentDescription = stringResource(coil.compose.base.R.string.navigation_menu),

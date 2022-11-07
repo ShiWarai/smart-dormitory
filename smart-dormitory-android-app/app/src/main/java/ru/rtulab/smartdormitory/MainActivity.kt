@@ -12,6 +12,7 @@ import androidx.compose.runtime.CompositionLocalProvider
 import androidx.compose.runtime.collectAsState
 import androidx.compose.ui.Modifier
 import androidx.navigation.compose.rememberNavController
+import com.google.accompanist.pager.ExperimentalPagerApi
 import dagger.hilt.android.AndroidEntryPoint
 import ru.rtulab.smartdormitory.presentation.SmartDormitory
 import ru.rtulab.smartdormitory.presentation.navigation.LocalNavController
@@ -24,6 +25,7 @@ import ru.rtulab.smartdormitory.ui.theme.SmartDormitoryTheme
 class MainActivity : ComponentActivity() {
     private val authViewModel: AuthViewModel by viewModels()
 
+    @OptIn(ExperimentalPagerApi::class)
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContent {

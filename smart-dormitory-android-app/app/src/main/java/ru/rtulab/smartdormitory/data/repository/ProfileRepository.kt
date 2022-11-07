@@ -14,4 +14,9 @@ class ProfileRepository @Inject constructor(
         profileApi.getMe(studentId)
 
     }
+
+    suspend fun fetchById(studentId:String) = handler {
+        profileApi.getById(studentId)
+
+    }
 }

@@ -14,6 +14,7 @@ import androidx.navigation.compose.composable
 import androidx.navigation.compose.currentBackStackEntryAsState
 import androidx.navigation.navDeepLink
 import androidx.navigation.navigation
+import com.google.accompanist.pager.ExperimentalPagerApi
 import ru.rtulab.smartdormitory.R
 import ru.rtulab.smartdormitory.presentation.ui.Profile.Profile
 import ru.rtulab.smartdormitory.presentation.ui.booking.Booking
@@ -26,8 +27,10 @@ import ru.rtulab.smartdormitory.presentation.ui.home.Home
 import ru.rtulab.smartdormitory.presentation.ui.objects.ObjectDetals
 import ru.rtulab.smartdormitory.presentation.ui.objects.Objects
 import ru.rtulab.smartdormitory.presentation.ui.report.ReportDescription
+import ru.rtulab.smartdormitory.presentation.ui.report.Reports
 import ru.rtulab.smartdormitory.presentation.viewmodel.hiltViewModel
 
+@ExperimentalPagerApi
 @Composable
 fun NavigationGraph(
     navController: NavHostController,
@@ -170,6 +173,7 @@ private fun NavGraphBuilder.profileGraph(
     }
 
 }
+@ExperimentalPagerApi
 private fun NavGraphBuilder.reportGraph(
     resources:Resources
 ){
@@ -177,6 +181,9 @@ private fun NavGraphBuilder.reportGraph(
         startDestination = AppTab.Reports.startDestination,
         route = AppTab.Reports.route
     ) {
+        composable(AppScreen.Reports.route){
+            Reports()
+        }
         composable(AppScreen.ReportCreate.route){
             ReportDescription()
         }

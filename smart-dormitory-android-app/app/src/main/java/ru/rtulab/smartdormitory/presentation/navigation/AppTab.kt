@@ -30,7 +30,8 @@ sealed class AppTab(
     object Objects: AppTab("objects_tab", AppScreen.Objects.route, R.string.objects, R.drawable.objects)
     object Booking: AppTab("booking_tab", AppScreen.Booking.route, R.string.booking, R.drawable.booking)
     object Profile: AppTab("profile_tab", AppScreen.Profile.route, R.string.profile, R.drawable.profile)
-    object Reports: AppTab("reports_tab", AppScreen.Reports.route, R.string.reports, R.drawable.ic_launcher_foreground)
+    object Reports: AppTab("reports_tab", AppScreen.Reports.route, R.string.reports, android.R.drawable.ic_dialog_alert
+    )
 
 
     fun saveState() = bundleOf(SCREEN_KEY to route)
@@ -45,12 +46,21 @@ sealed class AppTab(
     companion object {
         const val SCREEN_KEY = "SCREEN_KEY"
 
+        val four
+            get() = listOf(
+                Home,
+                Objects,
+                Booking,
+                Profile,
+            )
+
         val all
             get() = listOf(
                 Home,
                 Objects,
                 Booking,
                 Profile,
+                Reports
             )
 
         fun saver() = Saver<AppTab, Bundle>(

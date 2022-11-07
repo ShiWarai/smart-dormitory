@@ -8,9 +8,9 @@ interface ObjectApi {
     @GET("/objects/")
     suspend fun getAll():List<ObjectDto>
 
-    @GET("/objects/{objectId}")
+    @GET("/objects/{id}")
     suspend fun getOne(
-        @Path("objectId") objectId: String
+        @Path("id") objectId: String
     ):ObjectDto
 
 }

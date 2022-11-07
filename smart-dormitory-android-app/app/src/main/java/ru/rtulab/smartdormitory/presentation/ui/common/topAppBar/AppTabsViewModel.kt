@@ -19,6 +19,9 @@ class AppTabsViewModel @Inject constructor(
     private val _statePage = MutableStateFlow(1)
     val statePage = _statePage.asStateFlow()
 
+    private val _appFourTabs = MutableStateFlow(AppTab.four)
+    val appFourTabs = _appFourTabs.asStateFlow()
+
     private val _appTabs = MutableStateFlow(AppTab.all)
     val appTabs = _appTabs.asStateFlow()
 
@@ -27,12 +30,19 @@ class AppTabsViewModel @Inject constructor(
         viewModelScope.launch {
             var from = 0
             val appTabsAccess = allAppTabsAccess()
+            val appFourTabsAccess = fourAppTabsAccess()
+
             _appTabs.emit(AppTab.all.toList())
+            _appFourTabs.emit(AppTab.four.toList())
+
         }
     }
 
 
     fun allAppTabsAccess(): List<AppTab> {
         return _appTabs.value.filter { it.accessible }
+    }
+    fun fourAppTabsAccess(): List<AppTab> {
+        return _appFourTabs.value.filter { it.accessible }
     }
 }

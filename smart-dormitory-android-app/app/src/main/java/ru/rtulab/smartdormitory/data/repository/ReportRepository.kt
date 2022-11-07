@@ -12,4 +12,7 @@ class ReportRepository @Inject constructor(
     suspend fun createReport(requestCreateReport: RequestCreateReport) = handler{
         reportApi.createReport(requestCreateReport)
     }
+    suspend fun getAll() = handler{
+        reportApi.getAll()
+    }
 }

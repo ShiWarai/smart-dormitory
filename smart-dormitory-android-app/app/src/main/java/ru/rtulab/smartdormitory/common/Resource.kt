@@ -6,7 +6,7 @@ sealed class Resource<out T> {
     object Loading: Resource<Nothing>()
     object Empty: Resource<Nothing>()
 
-    inline fun handle(
+     inline fun handle(
         onSuccess: (data: T) -> Unit = {},
         onError: (msg: String) -> Unit = {},
         onLoading: () -> Unit = {},
@@ -35,7 +35,7 @@ class ResourceGroup(
      * @param other [Resource] to be added to this group
      * @return this group with added [Resource]
      */
-    operator fun plus(other: Resource<*>): ResourceGroup {
+    suspend operator fun plus(other: Resource<*>): ResourceGroup {
         group.add(other)
         return this
     }
@@ -47,9 +47,9 @@ class ResourceGroup(
      * @param onSuccess function to be invoked if every [Resource] in this group is a [Resource.Success].
      *        It returns a list of values produced by resources **in order of addition**. Take extreme care when
      *        casting to your desired type.
-     * @sample ru.rtuitlab.itlab.presentation.screens.reports.ReportsViewModel.fetchReports
+     * @sample ru.rtulab.presentation.screens.reports.ReportsViewModel.fetchReports
      */
-    fun handle(
+     fun handle(
         onSuccess: (data: List<*>) -> Unit,
         onError: (msg: String) -> Unit
     ) {
