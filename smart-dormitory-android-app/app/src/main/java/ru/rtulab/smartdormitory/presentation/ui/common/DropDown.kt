@@ -21,7 +21,6 @@ import androidx.compose.ui.platform.LocalDensity
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.toSize
-import ru.rtulab.smartdormitory.data.remote.api.objects.models.ObjectType
 import ru.rtulab.smartdormitory.ui.theme.Black
 import ru.rtulab.smartdormitory.ui.theme.White
 

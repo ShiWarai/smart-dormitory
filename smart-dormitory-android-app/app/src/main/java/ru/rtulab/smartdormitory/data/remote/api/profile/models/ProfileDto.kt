@@ -1,6 +1,5 @@
 package ru.rtulab.smartdormitory.data.remote.api.profile.models
 
-import androidx.compose.ui.semantics.Role
 import kotlinx.serialization.Serializable
 
 @Serializable

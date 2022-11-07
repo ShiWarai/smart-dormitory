@@ -2,9 +2,7 @@ package ru.rtulab.smartdormitory.data.repository
 
 import ru.rtulab.smartdormitory.common.ResponseHandler
 import ru.rtulab.smartdormitory.data.remote.api.booking.BookingApi
-import ru.rtulab.smartdormitory.data.remote.api.booking.models.BookingDto
 import ru.rtulab.smartdormitory.data.remote.api.booking.models.RequestBookingCreate
-import ru.rtulab.smartdormitory.data.remote.api.profile.ProfileApi
 import javax.inject.Inject
 
 class BookingRepository @Inject constructor(

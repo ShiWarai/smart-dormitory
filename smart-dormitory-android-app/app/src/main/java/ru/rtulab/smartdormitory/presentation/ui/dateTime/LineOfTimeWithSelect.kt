@@ -1,7 +1,5 @@
 package ru.rtulab.smartdormitory.presentation.ui.dateTime
 
-import android.graphics.Paint
-import androidx.compose.foundation.BorderStroke
 import androidx.compose.foundation.Canvas
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.fillMaxWidth
@@ -12,18 +10,13 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.geometry.Offset
 import androidx.compose.ui.geometry.Size
-import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.graphics.drawscope.DrawStyle
 import androidx.compose.ui.graphics.drawscope.Stroke
 import androidx.compose.ui.layout.onSizeChanged
 import androidx.compose.ui.platform.LocalDensity
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
-import ru.rtulab.smartdormitory.ui.theme.Green
-import ru.rtulab.smartdormitory.ui.theme.Red
 import ru.rtulab.smartdormitory.ui.theme.White
-import ru.rtulab.smartdormitory.ui.theme.White50
 
 @Preview
 @Composable

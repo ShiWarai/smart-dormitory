@@ -14,11 +14,11 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import kotlinx.coroutines.runBlocking
 import ru.rtulab.smartdormitory.R
-import ru.rtulab.smartdormitory.presentation.navigation.AppScreen
 import ru.rtulab.smartdormitory.presentation.navigation.LocalNavController
-import ru.rtulab.smartdormitory.presentation.ui.common.*
+import ru.rtulab.smartdormitory.presentation.ui.common.ButtonFill
+import ru.rtulab.smartdormitory.presentation.ui.common.ButtonOutlined
+import ru.rtulab.smartdormitory.presentation.ui.common.H1
 import ru.rtulab.smartdormitory.presentation.viewmodel.singletonViewModel
 import ru.rtulab.smartdormitory.ui.theme.Accent
 import ru.rtulab.smartdormitory.ui.theme.White

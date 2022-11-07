@@ -18,7 +18,6 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.launch
-import kotlinx.coroutines.runBlocking
 import ru.rtulab.smartdormitory.R
 import ru.rtulab.smartdormitory.ui.theme.Accent
 import ru.rtulab.smartdormitory.ui.theme.White

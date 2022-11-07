@@ -3,13 +3,10 @@ package ru.rtulab.smartdormitory
 import androidx.lifecycle.ViewModel
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.MutableStateFlow
-import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.runBlocking
 import ru.rtulab.smartdormitory.common.persistence.AuthStateStorage
 import ru.rtulab.smartdormitory.data.repository.ProfileRepository
-import ru.rtulab.smartdormitory.presentation.ui.Profile.ProfileViewModel
-import ru.rtulab.smartdormitory.presentation.viewmodel.singletonViewModel
 import javax.inject.Inject
 
 @HiltViewModel

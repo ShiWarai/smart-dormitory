@@ -1,6 +1,5 @@
 package ru.rtulab.smartdormitory.presentation.ui.booking
 
-import android.util.Log
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
@@ -20,7 +19,6 @@ import ru.rtulab.smartdormitory.R
 import ru.rtulab.smartdormitory.presentation.navigation.AppScreen
 import ru.rtulab.smartdormitory.presentation.navigation.LocalNavController
 import ru.rtulab.smartdormitory.presentation.ui.common.*
-import ru.rtulab.smartdormitory.presentation.ui.common.topAppBar.AppBarViewModel
 import ru.rtulab.smartdormitory.presentation.ui.objects.ObjectViewModel
 import ru.rtulab.smartdormitory.presentation.viewmodel.singletonViewModel
 import ru.rtulab.smartdormitory.ui.theme.Green

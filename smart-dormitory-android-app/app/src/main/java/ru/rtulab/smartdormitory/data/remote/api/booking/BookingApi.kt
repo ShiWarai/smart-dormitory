@@ -4,8 +4,6 @@ import retrofit2.Response
 import retrofit2.http.*
 import ru.rtulab.smartdormitory.data.remote.api.booking.models.BookingDto
 import ru.rtulab.smartdormitory.data.remote.api.booking.models.RequestBookingCreate
-import ru.rtulab.smartdormitory.data.remote.api.objects.ObjectWithDate
-import ru.rtulab.smartdormitory.data.remote.api.objects.models.ObjectDto
 
 interface BookingApi {
 

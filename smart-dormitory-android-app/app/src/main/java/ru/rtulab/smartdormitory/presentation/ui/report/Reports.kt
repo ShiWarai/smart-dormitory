@@ -21,14 +21,14 @@ import com.google.accompanist.pager.rememberPagerState
 import com.google.accompanist.swiperefresh.SwipeRefresh
 import com.google.accompanist.swiperefresh.rememberSwipeRefreshState
 import ru.rtulab.smartdormitory.R
-import ru.rtulab.smartdormitory.common.Resource
-import ru.rtulab.smartdormitory.presentation.navigation.AppScreen
 import ru.rtulab.smartdormitory.presentation.navigation.LocalNavController
 import ru.rtulab.smartdormitory.presentation.ui.common.AppBarTabRow
 import ru.rtulab.smartdormitory.presentation.ui.common.LoadingIndicator
-import ru.rtulab.smartdormitory.presentation.ui.common.ObjectCardWithDate
 import ru.rtulab.smartdormitory.presentation.viewmodel.singletonViewModel
-import ru.rtulab.smartdormitory.ui.theme.*
+import ru.rtulab.smartdormitory.ui.theme.Accent
+import ru.rtulab.smartdormitory.ui.theme.Green
+import ru.rtulab.smartdormitory.ui.theme.Red
+import ru.rtulab.smartdormitory.ui.theme.White
 
 @ExperimentalPagerApi
 @Composable

@@ -2,7 +2,6 @@ package ru.rtulab.smartdormitory.data.remote.api.report.models
 
 import kotlinx.serialization.Serializable
 import ru.rtulab.smartdormitory.data.remote.api.objects.ObjectWithoutDate
-import ru.rtulab.smartdormitory.data.remote.api.objects.models.ObjectDto
 import ru.rtulab.smartdormitory.data.remote.api.profile.models.ProfileDto
 
 @Serializable

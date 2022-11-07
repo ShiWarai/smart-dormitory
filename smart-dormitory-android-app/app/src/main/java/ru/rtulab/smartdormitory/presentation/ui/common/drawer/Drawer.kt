@@ -2,17 +2,10 @@ package ru.rtulab.smartdormitory.presentation.ui.common.drawer
 
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.*
-import androidx.compose.material.ScaffoldState
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.res.colorResource
-import androidx.compose.ui.text.font.FontWeight
-import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
-import androidx.navigation.NavController
-import kotlinx.coroutines.CoroutineScope
-import ru.rtulab.smartdormitory.R
 import ru.rtulab.smartdormitory.ui.theme.Accent
 import ru.rtulab.smartdormitory.ui.theme.White
 

@@ -28,7 +28,6 @@ import ru.rtulab.smartdormitory.presentation.ui.objects.ObjectDetals
 import ru.rtulab.smartdormitory.presentation.ui.objects.Objects
 import ru.rtulab.smartdormitory.presentation.ui.report.ReportDescription
 import ru.rtulab.smartdormitory.presentation.ui.report.Reports
-import ru.rtulab.smartdormitory.presentation.viewmodel.hiltViewModel
 
 @ExperimentalPagerApi
 @Composable

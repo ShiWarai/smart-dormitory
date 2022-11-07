@@ -9,7 +9,6 @@ import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.launch
 import ru.rtulab.smartdormitory.common.Resource
-import ru.rtulab.smartdormitory.common.emitInIO
 import ru.rtulab.smartdormitory.data.remote.api.booking.models.BookingDto
 import ru.rtulab.smartdormitory.data.repository.BookingRepository
 import javax.inject.Inject

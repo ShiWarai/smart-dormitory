@@ -2,11 +2,8 @@ package ru.rtulab.smartdormitory.presentation.ui.Profile
 
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.*
-import androidx.compose.foundation.lazy.LazyColumn
-import androidx.compose.foundation.lazy.items
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.Text
-import androidx.compose.material.icons.Icons
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.collectAsState
 import androidx.compose.ui.Alignment
@@ -20,13 +17,11 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import coil.ImageLoader
 import coil.compose.AsyncImage
 import coil.request.ImageRequest
 import ru.rtulab.smartdormitory.R
 import ru.rtulab.smartdormitory.presentation.ui.common.H1
 import ru.rtulab.smartdormitory.presentation.ui.common.LoadingIndicator
-import ru.rtulab.smartdormitory.presentation.ui.common.ObjectCardWithDate
 import ru.rtulab.smartdormitory.presentation.viewmodel.singletonViewModel
 import ru.rtulab.smartdormitory.ui.theme.White
 import ru.rtulab.smartdormitory.ui.theme.White50

@@ -1,10 +1,9 @@
 package ru.rtulab.smartdormitory.data
 
-import java.io.IOException
-import okhttp3.Credentials;
-import okhttp3.Interceptor;
-import okhttp3.Request;
-import okhttp3.Response;
+import okhttp3.Credentials
+import okhttp3.Interceptor
+import okhttp3.Request
+import okhttp3.Response
 import ru.rtulab.smartdormitory.common.persistence.AuthStateStorage
 
 

@@ -5,9 +5,7 @@ import androidx.lifecycle.viewModelScope
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.asStateFlow
-import ru.rtulab.smartdormitory.AuthViewModel
 import ru.rtulab.smartdormitory.common.Resource
-import ru.rtulab.smartdormitory.common.ResponseHandler
 import ru.rtulab.smartdormitory.common.emitInIO
 import ru.rtulab.smartdormitory.common.persistence.AuthStateStorage
 import ru.rtulab.smartdormitory.data.remote.api.profile.models.ProfileDto

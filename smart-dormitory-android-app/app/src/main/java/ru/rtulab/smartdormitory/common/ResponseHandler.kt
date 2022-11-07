@@ -1,9 +1,9 @@
 package ru.rtulab.smartdormitory.common
 
 import android.util.Log
+import retrofit2.HttpException
 import java.net.SocketTimeoutException
 import java.net.UnknownHostException
-import retrofit2.HttpException
 
 
 class ResponseHandler {

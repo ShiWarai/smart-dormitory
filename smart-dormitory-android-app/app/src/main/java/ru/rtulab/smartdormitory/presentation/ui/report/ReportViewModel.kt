@@ -1,20 +1,16 @@
 package ru.rtulab.smartdormitory.presentation.ui.report
 
 import android.util.Log
-import androidx.compose.material.SnackbarHost
 import androidx.compose.material.SnackbarHostState
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.async
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.launch
-import kotlinx.coroutines.runBlocking
 import ru.rtulab.smartdormitory.common.Resource
 import ru.rtulab.smartdormitory.common.emitInIO
-import ru.rtulab.smartdormitory.data.remote.api.objects.ObjectWithoutDate
 import ru.rtulab.smartdormitory.data.remote.api.objects.models.ObjectDto
 import ru.rtulab.smartdormitory.data.remote.api.objects.models.ObjectRoom
 import ru.rtulab.smartdormitory.data.remote.api.objects.models.ObjectType

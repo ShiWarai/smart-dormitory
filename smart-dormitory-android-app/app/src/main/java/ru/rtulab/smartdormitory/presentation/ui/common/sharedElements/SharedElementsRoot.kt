@@ -18,9 +18,6 @@ import androidx.compose.ui.unit.toSize
 import androidx.compose.ui.util.fastForEach
 import androidx.compose.ui.util.fastMap
 import ru.rtulab.smartdormitory.presentation.ui.common.sharedElements.utils.*
-import ru.rtulab.smartdormitory.presentation.ui.common.sharedElements.utils.CompositionLocalValues
-import ru.rtulab.smartdormitory.presentation.ui.common.sharedElements.utils.calculateDirection
-import ru.rtulab.smartdormitory.presentation.ui.common.sharedElements.utils.compositionLocalValues
 
 @Composable
 internal fun BaseSharedElement(

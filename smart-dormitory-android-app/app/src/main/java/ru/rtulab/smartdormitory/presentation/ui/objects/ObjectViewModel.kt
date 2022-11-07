@@ -1,24 +1,17 @@
 package ru.rtulab.smartdormitory.presentation.ui.objects
 
-import android.telephony.mbms.FileInfo
-import androidx.compose.ui.res.stringResource
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.asStateFlow
-import ru.rtulab.smartdormitory.R
 import ru.rtulab.smartdormitory.common.Resource
 import ru.rtulab.smartdormitory.common.emitInIO
-import ru.rtulab.smartdormitory.common.persistence.AuthStateStorage
-import ru.rtulab.smartdormitory.data.remote.api.objects.ObjectWithDate
 import ru.rtulab.smartdormitory.data.remote.api.objects.ObjectWithoutDate
 import ru.rtulab.smartdormitory.data.remote.api.objects.models.ObjectDto
 import ru.rtulab.smartdormitory.data.remote.api.objects.models.ObjectRoom
 import ru.rtulab.smartdormitory.data.remote.api.objects.models.ObjectType
-import ru.rtulab.smartdormitory.data.remote.api.profile.models.ProfileDto
 import ru.rtulab.smartdormitory.data.repository.ObjectRepository
-import ru.rtulab.smartdormitory.data.repository.ProfileRepository
 import javax.inject.Inject
 
 @HiltViewModel

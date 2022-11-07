@@ -14,12 +14,10 @@ import ru.rtulab.smartdormitory.common.persistence.AuthStateStorage
 import ru.rtulab.smartdormitory.data.remote.api.booking.models.BookingDto
 import ru.rtulab.smartdormitory.data.remote.api.booking.models.RequestBookingCreate
 import ru.rtulab.smartdormitory.data.remote.api.objects.ObjectWithDate
-import ru.rtulab.smartdormitory.data.remote.api.objects.ObjectWithoutDate
 import ru.rtulab.smartdormitory.data.remote.api.objects.models.ObjectDto
 import ru.rtulab.smartdormitory.data.remote.api.objects.models.ObjectRoom
 import ru.rtulab.smartdormitory.data.remote.api.objects.models.ObjectType
 import ru.rtulab.smartdormitory.data.repository.BookingRepository
-import ru.rtulab.smartdormitory.data.repository.ObjectRepository
 import javax.inject.Inject
 
 @HiltViewModel
