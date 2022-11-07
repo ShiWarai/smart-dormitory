@@ -1,13 +1,7 @@
 package ru.rtulab.smartdormitory.presentation.ui.booking
 
-import android.icu.text.DateFormatSymbols
-import android.icu.text.SimpleDateFormat
 import android.text.format.DateFormat
 import android.util.Log
-import android.widget.Toast
-import androidx.compose.foundation.gestures.FlingBehavior
-import androidx.compose.foundation.gestures.ScrollableState
-import androidx.compose.foundation.gestures.scrollable
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyRow
 import androidx.compose.foundation.lazy.items
@@ -16,17 +10,15 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
-import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.runBlocking
 import ru.rtulab.smartdormitory.R
-import ru.rtulab.smartdormitory.presentation.navigation.AppScreen
 import ru.rtulab.smartdormitory.presentation.navigation.LocalNavController
-import ru.rtulab.smartdormitory.presentation.ui.common.*
+import ru.rtulab.smartdormitory.presentation.ui.common.ButtonFill
+import ru.rtulab.smartdormitory.presentation.ui.common.ButtonOutlined
+import ru.rtulab.smartdormitory.presentation.ui.common.H1
 import ru.rtulab.smartdormitory.presentation.ui.dateTime.Clock
 import ru.rtulab.smartdormitory.presentation.ui.dateTime.LineOfTimeWithSelect
 import ru.rtulab.smartdormitory.presentation.ui.dateTime.WeekDayItem
@@ -80,11 +72,13 @@ Scaffold(
             val zchislo = z.getRawOffset() / 1000 / 60 / 60
             val tz = if(zchislo<10 && zchislo>-10) "0$zchislo" else "$zchislo"
 
-            val isDay = if(date.hours>12) 0 else 1;
+            // val isDay = if(date.hours>12) 0 else 1;
 
 
 
             val day = 86400000
+            val hour = 3600000
+            val sec = 60000
 
             val dayOfWeek = remember { mutableStateOf(0) }
             val (leftTwoDig, ltd) = remember {
@@ -248,12 +242,12 @@ Scaffold(
                                 colorFill = White,
                                 onClick = {
                                     bookingViewModel.beginTime.value = DateFormat.format(
-                                        "yyyy-MM-dd'T'HH:mm:ss.000+$tz:00",
-                                        date.time - (date.time % (86400000)) - 3*3600000 + day * (dayOfWeek.value+isDay) + (leftTwoDig * 60 + leftTwoDigM) * 60000
+                                        "yyyy-MM-dd'T'HH:mm:ss+$tz:00",
+                                        date.time - (date.time % day) - zchislo*hour + day * (dayOfWeek.value) + (leftTwoDig * 60 + leftTwoDigM) * sec
                                     ) as String
                                     bookingViewModel.endTime.value = DateFormat.format(
-                                        "yyyy-MM-dd'T'HH:mm:ss.000+$tz:00",
-                                        date.time - (date.time % (86400000)) - 3*3600000 + day * (dayOfWeek.value+isDay) + (rightTwoDig * 60 + rightTwoDigM) * 60000
+                                        "yyyy-MM-dd'T'HH:mm:ss+$tz:00",
+                                        date.time - (date.time % day) - zchislo*hour + day * (dayOfWeek.value) + (rightTwoDig * 60 + rightTwoDigM) * sec
                                     ) as String
                                     Log.d("TIMEZONE",bookingViewModel.beginTime.value)
                                     bookingViewModel.createBook()
