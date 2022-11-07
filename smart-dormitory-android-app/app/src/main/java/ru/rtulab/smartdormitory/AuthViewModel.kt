@@ -21,7 +21,7 @@ class AuthViewModel @Inject constructor(
     var _authState = MutableStateFlow(authStateStorage.user!=null)
     var authState = _authState.asStateFlow()
 
-    fun onLoginEvent(user:String,password:String) {
+    fun onLoginEvent(user:String, password:String) {
         runBlocking {
             authStateStorage.updateUserId(user)
             authStateStorage.updateUserPassword(password)
